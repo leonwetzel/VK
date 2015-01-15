@@ -59,7 +59,7 @@ public class Counter
     }
     
     public void sayHello() {
-    	System.out.println("Hello Michaël and Paul!");
+    	System.out.println("Hello Michaël!");
     }
     
     public void michTest(){
