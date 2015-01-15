@@ -59,6 +59,6 @@ public class Counter
     }
     
     public void sayHello() {
-    	System.out.println("Hello dawgs!");
+    	System.out.println("Hello Michaël and Paul!");
     }
 }
