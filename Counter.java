@@ -57,4 +57,8 @@ public class Counter
     {
         count = 0;
     }
+    
+    public void sayHello() {
+    	System.out.println("Hello!");
+    }
 }
