@@ -1,3 +1,5 @@
+This map contains the starting files for the Vossen & Konijnen project. 
+
 Project: foxes-and-rabbits-v2
 Authors: Michael Kölling and David J. Barnes
 
