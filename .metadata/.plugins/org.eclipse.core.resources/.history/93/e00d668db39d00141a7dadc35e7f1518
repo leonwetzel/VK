@@ -47,8 +47,6 @@ public class SimulatorView extends JFrame
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
         test = new JLabel(TEST, JLabel.CENTER);
-        // noot: JFrame object ontbreekt.
-        // moet nog worden toegevoegd...
         makeMenuBar();
         
         setLocation(100, 50);
