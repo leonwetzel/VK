@@ -10,9 +10,6 @@ import java.awt.Color;
  * 
  * @author David J. Barnes and Michael KÃ¶lling
  * @version 2011.07.31
- * 
- * This class is part of the Vossen & Konijnen Project by Jesse Stal, Paul Koning,
- * Michaël van der Veen en Leon Wetzel. Don't steal this work. 
  */
 public class Simulator
 {
@@ -78,7 +75,7 @@ public class Simulator
     }
     
     /**
-     * Method to generate the simulator (this method will be used in method main)
+     * Method to generate the simulator
      */
     public static void createSim() 
     {
@@ -115,9 +112,6 @@ public class Simulator
                 // else leave the location empty.
             }
         }
-        
-        // Show the starting state in the view.
-        view.showStatus(step, field);        
         
     }
     
