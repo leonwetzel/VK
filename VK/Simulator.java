@@ -35,7 +35,7 @@ public class Simulator
     /**
      * Construct a simulation field with default size.
      */
-    public Simulator()
+    public static void main(String[] args)
     {
         this(DEFAULT_DEPTH, DEFAULT_WIDTH);
     }

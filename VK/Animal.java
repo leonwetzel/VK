@@ -1,5 +1,4 @@
 import java.util.List;
-import java.lang.Object;
 
 /**
  * A class representing shared characteristics of animals.
