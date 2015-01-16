@@ -33,9 +33,17 @@ public class Simulator
     private SimulatorView view;
     
     /**
-     * Construct a simulation field with default size.
+     * Method main for use in Eclipse
      */
     public static void main(String[] args)
+    {
+    	createSim();
+    }
+ 
+    /**
+     * Construct a simulation field with default size.
+     */    
+    public Simulator()
     {
         this(DEFAULT_DEPTH, DEFAULT_WIDTH);
     }
@@ -64,6 +72,26 @@ public class Simulator
         
         // Setup a valid starting point.
         reset();
+    }
+    
+    /**
+     * Method to generate the simulator
+     */
+    public static void createSim() 
+    {
+        int depth = DEFAULT_DEPTH;
+        int width = DEFAULT_WIDTH;
+        
+        ArrayList<Animal> animals = new ArrayList<Animal>();
+        Field field = new Field(depth, width);
+
+        // Create a view of the state of each location in the field.
+        SimulatorView view = new SimulatorView(depth, width);
+        view.setColor(Rabbit.class, Color.ORANGE);
+        view.setColor(Fox.class, Color.BLUE);
+        
+        // Setup a valid starting point.
+        reset();        
     }
     
     /**
