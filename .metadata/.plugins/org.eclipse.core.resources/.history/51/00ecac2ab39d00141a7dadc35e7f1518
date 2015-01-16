@@ -47,7 +47,6 @@ public class SimulatorView extends JFrame
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
         test = new JLabel(TEST, JLabel.CENTER);
-        makeMenuBar();
         
         setLocation(100, 50);
         
@@ -60,29 +59,6 @@ public class SimulatorView extends JFrame
         contents.add(test, BorderLayout.WEST);
         pack();
         setVisible(true);
-    }
-    
-    /**
-     * Method to create the menubar
-     * Please note that this method is subject to 
-     * major changes regarding button interaction.
-     */
-    public void makeMenuBar(JFrame frame)
-    {
-    	JMenuBar menubar = new JMenuBar();
-    	frame.setJMenuBar(menubar);
-    	
-    	// eerste item
-    	JMenu menu1 = new JMenu("Menu 1");
-    	menubar.add(menu1);
-    	
-    	// tweede item
-    	JMenu menu2 = new JMenu("Menu 2");
-    	menubar.add(menu2);
-    	
-    	// deerde item
-    	JMenu help = new JMenu("Help");
-    	menubar.add(help);    	
     }
     
     /**
