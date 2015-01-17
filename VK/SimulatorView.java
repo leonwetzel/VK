@@ -24,14 +24,15 @@ public class SimulatorView extends JFrame
 
     private final String STEP_PREFIX = "Step: ";
     private final String POPULATION_PREFIX = "Population: ";
-    private final String TEST = "Your buttons go here!";
-    private JLabel stepLabel, population, test;
+    private JLabel stepLabel, population;
     private FieldView fieldView;
     
     // A map for storing colors for participants in the simulation
     private Map<Class, Color> colors;
     // A statistics object computing and storing simulation information
     private FieldStats stats;
+    
+    private JFrame frame;
 
     /**
      * Create a view of the given width and height.
@@ -39,52 +40,24 @@ public class SimulatorView extends JFrame
      * @param width  The simulation's width.
      */
     public SimulatorView(int height, int width)
-    {
+    {   	
         stats = new FieldStats();
         colors = new LinkedHashMap<Class, Color>();
 
         setTitle("Fox and Rabbit Simulation");
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
-        test = new JLabel(TEST, JLabel.CENTER);
-        // noot: JFrame object ontbreekt.
-        // moet nog worden toegevoegd...
-        makeMenuBar();
         
         setLocation(100, 50);
         
         fieldView = new FieldView(height, width);
-
+        
         Container contents = getContentPane();
         contents.add(stepLabel, BorderLayout.NORTH);
         contents.add(fieldView, BorderLayout.CENTER);
         contents.add(population, BorderLayout.SOUTH);
-        contents.add(test, BorderLayout.WEST);
         pack();
         setVisible(true);
-    }
-    
-    /**
-     * Method to create the menubar
-     * Please note that this method is subject to 
-     * major changes regarding button interaction.
-     */
-    public void makeMenuBar(JFrame frame)
-    {
-    	JMenuBar menubar = new JMenuBar();
-    	frame.setJMenuBar(menubar);
-    	
-    	// eerste item
-    	JMenu menu1 = new JMenu("Menu 1");
-    	menubar.add(menu1);
-    	
-    	// tweede item
-    	JMenu menu2 = new JMenu("Menu 2");
-    	menubar.add(menu2);
-    	
-    	// deerde item
-    	JMenu help = new JMenu("Help");
-    	menubar.add(help);    	
     }
     
     /**
