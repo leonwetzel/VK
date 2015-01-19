@@ -14,7 +14,7 @@ import java.util.Map;
  * @author David J. Barnes and Michael Kölling
  * @version 2011.07.31
  */
-public class SimulatorView extends JFrame
+public class SimulatorView extends JFrame implements ActionListener
 {
     // Colors used for empty locations.
     private static final Color EMPTY_COLOR = Color.white;
@@ -69,6 +69,32 @@ public class SimulatorView extends JFrame
     {
         colors.put(animalClass, color);
     }
+    
+    /**
+     * Method to create the left sidebar
+     * @param frame
+     */
+    public void makeleftSidebar(JFrame frame)
+    {
+    	JButton oneStep = new JButton("Step 1");
+    	oneStep.addActionListener(this);
+    	
+    	JButton fourThousandStep = new JButton("Step 4000");
+    	fourThousandStep.addActionListener(this);
+    }
+    
+    /**
+     * Perform actions, according to the button pressed
+     */
+    public void actionPerformed(ActionEvent e) {
+		if (e.getSource()==oneStep) {
+			simulateOneStep();
+		}
+		
+		if (e.getSource()== fourThousandStep) {
+			runLongSimulation(); 
+		}
+	}
 
     /**
      * @return The color to be used for a given class of animal.
