@@ -12,7 +12,7 @@ import java.awt.Color;
  * @version 2011.07.31
  * 
  * This class is part of the Vossen & Konijnen Project by Jesse Stal, Paul Koning,
- * Michaël van der Veen en Leon Wetzel. Don't steal this work. 
+ * Michaël van der Veen and Leon Wetzel. Don't steal this work. 
  * 
  * Questions regarding code or development process? Please send an e-mail to l.f.a.wetzel@st.hanze.nl.
  */
