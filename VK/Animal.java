@@ -6,7 +6,6 @@ import java.util.List;
  * @author David J. Barnes and Michael Kölling
  * @version 2011.07.31
  */
-//Paul
 public abstract class Animal
 {
     // Whether the animal is alive or not.
