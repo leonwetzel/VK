@@ -37,13 +37,7 @@ public class Simulator
     // A graphical view of the simulation.
     private SimulatorView view;
     
-    /**
-     * Method main for use in Eclipse
-     */
-    public static void main(String[] args)
-    {
-    	createSim();
-    }
+    
  
     /**
      * Construct a simulation field with default size.
@@ -52,6 +46,10 @@ public class Simulator
     {
         this(DEFAULT_DEPTH, DEFAULT_WIDTH);
     }
+    
+    public static void main(String[] args){
+   	 new Simulator();
+   	 }
     
     /**
      * Create a simulation field with the given size.
