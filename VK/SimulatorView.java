@@ -1,11 +1,11 @@
 import java.awt.*;
+
 import java.awt.event.*;
 
 import javax.swing.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 /**
  * A graphical view of the simulation grid.
  * The view displays a colored rectangle for each location 
@@ -42,28 +42,35 @@ public class SimulatorView extends JFrame implements ActionListener
      * @param width  The simulation's width.
      */
     public SimulatorView(int height, int width)
-    {   	
+    {  
+    	frame = new JFrame("Foxes and Rabbits");
+    	JPanel container = new JPanel();
+    	container.setPreferredSize(new Dimension(500 , 400));
+    	container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
         stats = new FieldStats();
         colors = new LinkedHashMap<Class, Color>();
 
         setTitle("Fox and Rabbit Simulation");
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
-        oneButton = new JButton("Step 1");
-        hundredButton = new JButton("Step 100");
+        JButton oneButton = new JButton("Step 1");
+        JButton hundredButton = new JButton("Step 100");
         
-        setLocation(100, 50);
-        
+        JPanel lbuttons = new JPanel();
+        lbuttons.setPreferredSize(new Dimension(100, 300));
+        lbuttons.add(oneButton);
+        lbuttons.add(hundredButton);
         fieldView = new FieldView(height, width);
-        
-        Container contents = getContentPane();
-        contents.add(stepLabel, BorderLayout.NORTH);
-        contents.add(fieldView, BorderLayout.CENTER);
-        contents.add(population, BorderLayout.SOUTH);
-        contents.add(oneButton, BorderLayout.WEST);
-        contents.add(hundredButton, BorderLayout.EAST);
-        pack();
-        setVisible(true);
+        JPanel mcontent = new JPanel();
+        mcontent.setPreferredSize(new Dimension(400, 300));
+        mcontent.add(stepLabel, BorderLayout.NORTH);
+        mcontent.add(fieldView, BorderLayout.CENTER);
+        mcontent.add(population, BorderLayout.SOUTH);
+        container.add(lbuttons);
+        container.add(mcontent);
+        frame.getContentPane().add(container);
+        frame.pack();
+        frame.setVisible(true);
     }
     
     /**
@@ -93,13 +100,13 @@ public class SimulatorView extends JFrame implements ActionListener
      * Perform actions, according to the button pressed
      */
     public void actionPerformed(ActionEvent e) {
-		if (e.getSource()==oneStep) {
+		/*if (e.getSource()==oneStep) {
 			simulateOneStep();
 		}
 		
 		if (e.getSource()== fourThousandStep) {
 			runLongSimulation(); 
-		}
+		}*/
 	}
 
     /**
