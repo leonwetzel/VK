@@ -87,12 +87,13 @@ public class SimulatorView extends JFrame implements ActionListener
      * Perform actions, according to the button pressed
      */
     public void actionPerformed(ActionEvent e) {
+    	Simulator simu = new Simulator();
 		if (e.getSource()==oneStep) {
-			simulateOneStep();
+			simu.simulateOneStep();
 		}
 		
 		if (e.getSource()== fourThousandStep) {
-			runLongSimulation(); 
+			simu.runLongSimulation(); 
 		}
 	}
 
