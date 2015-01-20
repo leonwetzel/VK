@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
+
 import javax.swing.*;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -47,6 +49,8 @@ public class SimulatorView extends JFrame implements ActionListener
         setTitle("Fox and Rabbit Simulation");
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
+        oneButton = new JButton("Step 1");
+        hundredButton = new JButton("Step 100");
         
         setLocation(100, 50);
         
@@ -56,6 +60,8 @@ public class SimulatorView extends JFrame implements ActionListener
         contents.add(stepLabel, BorderLayout.NORTH);
         contents.add(fieldView, BorderLayout.CENTER);
         contents.add(population, BorderLayout.SOUTH);
+        contents.add(oneButton, BorderLayout.WEST);
+        contents.add(hundredButton, BorderLayout.EAST);
         pack();
         setVisible(true);
     }
