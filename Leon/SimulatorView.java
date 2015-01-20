@@ -71,7 +71,7 @@ public class SimulatorView extends JFrame implements ActionListener
     }
     
     /**
-     * Method to create the left sidebar
+     * Method to create buttons for the left sidebar
      * @param frame
      */
     public void makeleftSidebar(JFrame frame)
