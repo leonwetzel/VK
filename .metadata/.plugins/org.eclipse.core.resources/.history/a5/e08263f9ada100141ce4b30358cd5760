@@ -47,13 +47,17 @@ public class SimulatorView extends JFrame implements ActionListener
         colors = new LinkedHashMap<Class, Color>();
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
-        JPanel lbuttons = new JPanel();
+        JButton oneButton = new JButton("Step 1");
+        JButton hundredButton = new JButton("Step 100");
         
         // maak de menubar
         makeMenuBar(frame2);
 
         // maak de buttons
-        makeleftSidebarButtons(frame2, lbuttons);
+        JPanel lbuttons = new JPanel();
+        lbuttons.setPreferredSize(new Dimension(100, 300));
+        lbuttons.add(oneButton);
+        lbuttons.add(hundredButton);
         
         fieldView = new FieldView(height , width);
         JPanel mcontent = new JPanel();
@@ -83,17 +87,13 @@ public class SimulatorView extends JFrame implements ActionListener
      * Method to create the left sidebar
      * @param frame
      */
-    public void makeleftSidebarButtons(JFrame frame, JPanel lbuttons)
+    public void makeleftSidebar(JFrame frame)
     {
-    	// maak buttons en voeg de ActionListener toe
-        JButton oneButton = new JButton("Step 1");
-        oneButton.addActionListener(this);
-        JButton hundredButton = new JButton("Step 100");
-        hundredButton.addActionListener(this);
-        
-        lbuttons.setPreferredSize(new Dimension(100, 300));
-        lbuttons.add(oneButton);
-        lbuttons.add(hundredButton);    		
+    	JButton oneStep = new JButton("Step 1");
+    	oneStep.addActionListener(this);
+    	
+    	JButton fourThousandStep = new JButton("Step 4000");
+    	fourThousandStep.addActionListener(this);
     }
     
     /**

@@ -41,19 +41,28 @@ public class SimulatorView extends JFrame implements ActionListener
      */
     public SimulatorView(int height, int width)
     {  
-    	// maak het frame en dergelijke
     	frame2 = new JFrame("Foxes and Rabbits");
         stats = new FieldStats();
         colors = new LinkedHashMap<Class, Color>();
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
-        JPanel lbuttons = new JPanel();
+        JButton oneButton = new JButton("Step 1");
+        JButton hundredButton = new JButton("Step 100");
         
-        // maak de menubar
-        makeMenuBar(frame2);
-
-        // maak de buttons
-        makeleftSidebarButtons(frame2, lbuttons);
+        JMenuBar mbar = new JMenuBar();
+        JMenu menu1 = new JMenu("Jesse");
+        JMenu menu2 = new JMenu("Leon");
+        JMenu menu3 = new JMenu("Michael");
+        JMenu menu4 = new JMenu("Paul");
+        mbar.add(menu1);
+        mbar.add(menu2);
+        mbar.add(menu3);
+        mbar.add(menu4);
+        frame2.setJMenuBar(mbar);
+        JPanel lbuttons = new JPanel();
+        lbuttons.setPreferredSize(new Dimension(100, 300));
+        lbuttons.add(oneButton);
+        lbuttons.add(hundredButton);
         
         fieldView = new FieldView(height , width);
         JPanel mcontent = new JPanel();
@@ -83,33 +92,13 @@ public class SimulatorView extends JFrame implements ActionListener
      * Method to create the left sidebar
      * @param frame
      */
-    public void makeleftSidebarButtons(JFrame frame, JPanel lbuttons)
+    public void makeleftSidebar(JFrame frame)
     {
-    	// maak buttons en voeg de ActionListener toe
-        JButton oneButton = new JButton("Step 1");
-        oneButton.addActionListener(this);
-        JButton hundredButton = new JButton("Step 100");
-        hundredButton.addActionListener(this);
-        
-        lbuttons.setPreferredSize(new Dimension(100, 300));
-        lbuttons.add(oneButton);
-        lbuttons.add(hundredButton);    		
-    }
-    
-    /**
-     * Method to create the menubar
-     * @param frame
-     */
-    public void makeMenuBar(JFrame frame)
-    {
-        JMenuBar mbar = new JMenuBar();
-        JMenu menu1 = new JMenu("Menu 1");
-        JMenu menu2 = new JMenu("Menu 2");
-        JMenu menu3 = new JMenu("Help");
-        mbar.add(menu1);
-        mbar.add(menu2);
-        mbar.add(menu3);
-        frame.setJMenuBar(mbar);    	
+    	JButton oneStep = new JButton("Step 1");
+    	oneStep.addActionListener(this);
+    	
+    	JButton fourThousandStep = new JButton("Step 4000");
+    	fourThousandStep.addActionListener(this);
     }
     
     /**

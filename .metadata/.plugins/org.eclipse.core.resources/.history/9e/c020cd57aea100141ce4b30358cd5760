@@ -53,7 +53,7 @@ public class SimulatorView extends JFrame implements ActionListener
         makeMenuBar(frame2);
 
         // maak de buttons
-        makeleftSidebarButtons(frame2, lbuttons);
+        makeleftSidebar(frame2, lbuttons);
         
         fieldView = new FieldView(height , width);
         JPanel mcontent = new JPanel();
@@ -83,7 +83,7 @@ public class SimulatorView extends JFrame implements ActionListener
      * Method to create the left sidebar
      * @param frame
      */
-    public void makeleftSidebarButtons(JFrame frame, JPanel lbuttons)
+    public void makeleftSidebar(JFrame frame, JPanel lbuttons)
     {
     	// maak buttons en voeg de ActionListener toe
         JButton oneButton = new JButton("Step 1");
