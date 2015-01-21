@@ -48,7 +48,7 @@ public class Simulator
     }
     
     public static void main(String[] args){
-   	 createSim();
+   	 new Simulator();
    	 }
     
     /**
@@ -76,6 +76,7 @@ public class Simulator
         // Setup a valid starting point.
         reset();
     }
+    
     /**
      * Method to generate the simulator (this method will be used in method main)
      */
@@ -117,6 +118,7 @@ public class Simulator
         // Show the starting state in the view.
         view.showStatus(step, field);                
     }
+    
     /**
      * Run the simulation from its current state for a reasonably long period,
      * (4000 steps).
