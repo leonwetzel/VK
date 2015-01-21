@@ -48,7 +48,7 @@ public class Simulator
     }
     
     public static void main(String[] args){
-   	 createSim();
+   	 new Simulator();
    	 }
     
     /**
@@ -75,47 +75,6 @@ public class Simulator
         
         // Setup a valid starting point.
         reset();
-    }
-    /**
-     * Method to generate the simulator (this method will be used in method main)
-     */
-    public static void createSim() 
-    {
-        int depth = DEFAULT_DEPTH;
-        int width = DEFAULT_WIDTH;
-        
-        ArrayList<Animal> animals = new ArrayList<Animal>();
-        Field field = new Field(depth, width);
-
-        // Create a view of the state of each location in the field.
-        SimulatorView view = new SimulatorView(depth, width);
-        view.setColor(Rabbit.class, Color.ORANGE);
-        view.setColor(Fox.class, Color.BLUE);
-        
-        // Setup a valid starting point.
-        //reset();
-        int step = 0;
-        animals.clear();
-        
-        Random rand = Randomizer.getRandom();
-        field.clear();
-        for(int row = 0; row < field.getDepth(); row++) {
-            for(int col = 0; col < field.getWidth(); col++) {
-                if(rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
-                    Location location = new Location(row, col);
-                    Fox fox = new Fox(true, field, location);
-                    animals.add(fox);
-                }
-                else if(rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
-                    Location location = new Location(row, col);
-                    Rabbit rabbit = new Rabbit(true, field, location);
-                    animals.add(rabbit);
-                }
-                // else leave the location empty.
-            }
-        }
-        // Show the starting state in the view.
-        view.showStatus(step, field);                
     }
     /**
      * Run the simulation from its current state for a reasonably long period,
