@@ -28,14 +28,12 @@ public class SimulatorView extends JFrame implements ActionListener
     private final String POPULATION_PREFIX = "Population: ";
     private JLabel stepLabel, population;
     private FieldView fieldView;
-    
     // A map for storing colors for participants in the simulation
     private Map<Class, Color> colors;
     // A statistics object computing and storing simulation information
     private FieldStats stats;
     
-    private JFrame frame;
-
+    private JFrame frame2;
     /**
      * Create a view of the given width and height.
      * @param height The simulation's height.
@@ -43,34 +41,41 @@ public class SimulatorView extends JFrame implements ActionListener
      */
     public SimulatorView(int height, int width)
     {  
-    	frame = new JFrame("Foxes and Rabbits");
-    	JPanel container = new JPanel();
-    	container.setPreferredSize(new Dimension(500 , 400));
-    	container.setLayout(new BoxLayout(container, BoxLayout.X_AXIS));
+    	frame2 = new JFrame("Foxes and Rabbits");
         stats = new FieldStats();
         colors = new LinkedHashMap<Class, Color>();
-
-        setTitle("Fox and Rabbit Simulation");
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
         JButton oneButton = new JButton("Step 1");
         JButton hundredButton = new JButton("Step 100");
         
+        JMenuBar mbar = new JMenuBar();
+        JMenu menu1 = new JMenu("Jesse");
+        JMenu menu2 = new JMenu("Leon");
+        JMenu menu3 = new JMenu("Michael");
+        JMenu menu4 = new JMenu("Paul");
+        mbar.add(menu1);
+        mbar.add(menu2);
+        mbar.add(menu3);
+        mbar.add(menu4);
+        frame2.setJMenuBar(mbar);
         JPanel lbuttons = new JPanel();
         lbuttons.setPreferredSize(new Dimension(100, 300));
         lbuttons.add(oneButton);
         lbuttons.add(hundredButton);
-        fieldView = new FieldView(height, width);
+        
+        fieldView = new FieldView(height , width);
         JPanel mcontent = new JPanel();
-        mcontent.setPreferredSize(new Dimension(400, 300));
+        mcontent.setPreferredSize(new Dimension(800, 550));
         mcontent.add(stepLabel, BorderLayout.NORTH);
         mcontent.add(fieldView, BorderLayout.CENTER);
         mcontent.add(population, BorderLayout.SOUTH);
-        container.add(lbuttons);
-        container.add(mcontent);
-        frame.getContentPane().add(container);
-        frame.pack();
-        frame.setVisible(true);
+        JSplitPane container = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, lbuttons, mcontent);
+        container.setEnabled(false);
+        frame2.getContentPane().add(container);
+        frame2.setResizable(false);
+        frame2.pack();
+        frame2.setVisible(true);
     }
     
     /**
