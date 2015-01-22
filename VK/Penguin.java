@@ -23,10 +23,10 @@ public class Penguin extends Animal
     private static final int MAX_LITTER_SIZE = 2;
     // The food value of a single rabbit. In effect, this is the
     // number of steps a fox can go before it has to eat again.
-    private static final int RABBIT_FOOD_VALUE = 2;
+    private static final int RABBIT_FOOD_VALUE = 4;
     // The food value of a single fox.  In effect, this is the 
     // number of steps a penguin can go before it has to eat again.
-    private static final int FOX_FOOD_VALUE = 3;
+    private static final int FOX_FOOD_VALUE = 5;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
