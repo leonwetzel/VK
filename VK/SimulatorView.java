@@ -16,7 +16,7 @@ import java.util.Map;
  * @author David J. Barnes and Michael Kölling
  * @version 2011.07.31
  */
-public class SimulatorView extends JFrame implements ActionListener
+public class SimulatorView extends JFrame
 {
     // Colors used for empty locations.
     private static final Color EMPTY_COLOR = Color.white;
