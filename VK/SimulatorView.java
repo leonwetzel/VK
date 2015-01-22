@@ -118,7 +118,7 @@ public class SimulatorView extends JFrame
     /**
      * Perform actions, according to the button pressed
      */
-   /*  public void actionPerformed(ActionEvent e) {
+     public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==oneButton) {
 			System.out.println("one button werkt");
 		}
@@ -126,7 +126,7 @@ public class SimulatorView extends JFrame
 		if (e.getSource()== hundredButton) {
 			System.out.println("hundred button werkt");
 		}
-	/* }
+	 }
 
     /*public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==oneStep) {

@@ -28,7 +28,9 @@ public class Simulator
     // The probability that a fox will be created in any given grid position.
     private static final double FOX_CREATION_PROBABILITY = 0.02;
     // The probability that a rabbit will be created in any given grid position.
-    private static final double RABBIT_CREATION_PROBABILITY = 0.08;    
+    private static final double RABBIT_CREATION_PROBABILITY = 0.08; 
+    // The probability that a penguin will be created in any given grid position.
+    private static final double PENGUIN_CREATION_PROBABILITY = 0.01;
 
     // List of animals in the field.
     private List<Animal> animals;
@@ -74,6 +76,7 @@ public class Simulator
         view = new SimulatorView(depth, width);
         view.setColor(Rabbit.class, Color.ORANGE);
         view.setColor(Fox.class, Color.BLUE);
+        view.setColor(Penguin.class, Color.RED);
         
         // Add the actionlisteners
         addListeners();
@@ -176,6 +179,10 @@ public class Simulator
                     Location location = new Location(row, col);
                     Rabbit rabbit = new Rabbit(true, field, location);
                     animals.add(rabbit);
+                }else if(rand.nextDouble()<= PENGUIN_CREATION_PROBABILITY){
+                	Location location = new Location(row, col);
+                	Penguin penguin = new Penguin(true,field,location);
+                	animals.add(penguin);
                 }
                 // else leave the location empty.
             }
