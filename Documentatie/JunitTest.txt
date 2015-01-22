@@ -1,0 +1,15 @@
+Wanneer men de een object aanmaakt van Simulator,
+verschijnt er een User Interface van de programma.
+Hierin ziet men de menubalk, stappen knop en de populatie en aantal stappen.
+(met een scherm van de vossen en konijnen)
+
+Wanneer men de functie reset() gebruikt reset de simuatie weer naar de start positie en reset de stappen weer terug naar 0.
+
+Wanneer men de runLongSimulation() gebruikt, loopt de simulatie een simulatie van 4000 stappen. 
+Bij het kijken van de simulatie krijg je een ongebalanseerd gevoel. Er zijn soms exploties van konijnen of vossen. 
+Je ziet hierbij dat er steeds vanuit een kleine aantal overlevende (konijnen) een grote explotie komt aan nieuwe konijnen (of vossen). 
+Waarbij de gehele scherm binnen enkele oogwenken volledig is terug gegroeid en overmeesterd. 
+
+Wanneer men de simulate(int) gebruikt kan je een eigen aantal stappen simuleren. 
+
+wanneer men de simulateOneStep() gebruikt gaat de simulatie 1 stap verder.
