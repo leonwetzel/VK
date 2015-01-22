@@ -118,7 +118,6 @@ public class Simulator
     {
         for(int step = 1; step <= numSteps && view.isViable(field); step++) {
             simulateOneStep();
-            view.showStatus(step, field);
         }
     }
     
