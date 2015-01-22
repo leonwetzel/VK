@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.awt.Color;
 import java.awt.event.*;
-import javax.swing.*;
 
 /**
  * A simple predator-prey simulator, based on a rectangular field
@@ -18,8 +17,7 @@ import javax.swing.*;
  * 
  * Questions regarding code or development process? Please send an e-mail to l.f.a.wetzel@st.hanze.nl.
  */
-public class Simulator
-{
+public class Simulator implements Runnable{
     // Constants representing configuration information for the simulation.
     // The default width for the grid.
     private static final int DEFAULT_WIDTH = 120;
@@ -31,6 +29,8 @@ public class Simulator
     private static final double RABBIT_CREATION_PROBABILITY = 0.08; 
     // The probability that a penguin will be created in any given grid position.
     private static final double PENGUIN_CREATION_PROBABILITY = 0.01;
+    // the delay between each frame (you may remove static final)
+    private static final int THREAD_DELAY = 100;
 
     // List of animals in the field.
     private List<Animal> animals;
@@ -40,7 +40,10 @@ public class Simulator
     private int step;
     // A graphical view of the simulation.
     private SimulatorView view;
-    
+    // how many steps the thread has to do
+    private int threadStep;
+    // is the Thread running
+    private boolean running;
     
     
     /**
@@ -50,10 +53,6 @@ public class Simulator
     {
         this(DEFAULT_DEPTH, DEFAULT_WIDTH);
     }
-    
-    public static void main(String[] args){
-   	 new Simulator();
-   	 }
     
     /**
      * Create a simulation field with the given size.
@@ -94,20 +93,16 @@ public class Simulator
         
     }
     
-    
+    //TODO; foei dit moet in een aparte klasse
     public void addListeners()
     {
     	view.oneButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) { simulate(1); }
+            public void actionPerformed(ActionEvent e) { start(1); }
         });
     	view.hundredButton.addActionListener(new ActionListener() {
-    		public void actionPerformed(ActionEvent e) { runLongSimulation(); }
+    		public void actionPerformed(ActionEvent e) { start(100); }
     	});
-    	}
-    
-    	
-    	
-    
+    }
     
     /**
      * Run the simulation from its current state for the given number of steps.
@@ -187,4 +182,45 @@ public class Simulator
             }
         }
     }
+
+    /**
+     * Start the thread
+     * @param steps -1 for infinite; 
+     */
+    public void start(int steps){
+    	threadStep = steps;
+    	running = true;
+    	new Thread(this).start();
+    }
+    
+    /**
+     * Stop the thread
+     */
+    public void stop(){
+    	threadStep = 0;
+    	running = false;
+    }
+    
+    public void decrementSteps(){
+    	if (threadStep > 0){
+    		threadStep--;
+    	}
+    }
+    
+	@Override
+	public void run() {
+		while (running){
+			if (threadStep != 0){
+				simulateOneStep();
+				try {
+					Thread.sleep(THREAD_DELAY);
+				} catch(InterruptedException e){
+					e.printStackTrace();
+				}
+				decrementSteps();
+			} else {
+				stop();
+			}
+		}
+	}
 }
