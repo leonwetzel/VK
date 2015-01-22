@@ -88,9 +88,9 @@ public class SimulatorView extends JFrame implements ActionListener
     {
     	// maak buttons en voeg de ActionListener toe
         oneButton = new JButton("Step 1");
-        oneButton.addActionListener(this);
-        hundredButton = new JButton("Step 100");
-        hundredButton.addActionListener(this);
+        //oneButton.addActionListener(this);
+        hundredButton = new JButton("Step 4000");
+        //hundredButton.addActionListener(this);
         
         lbuttons.setPreferredSize(new Dimension(100, 300));
         lbuttons.add(oneButton);
@@ -118,7 +118,7 @@ public class SimulatorView extends JFrame implements ActionListener
     /**
      * Perform actions, according to the button pressed
      */
-    public void actionPerformed(ActionEvent e) {
+   /*  public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==oneButton) {
 			System.out.println("one button werkt");
 		}
@@ -126,7 +126,7 @@ public class SimulatorView extends JFrame implements ActionListener
 		if (e.getSource()== hundredButton) {
 			System.out.println("hundred button werkt");
 		}
-	}
+	/* }
 
     /*public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==oneStep) {
