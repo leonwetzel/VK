@@ -100,7 +100,7 @@ public class Simulator implements Runnable{
             public void actionPerformed(ActionEvent e) { start(1); }
         });
     	view.hundredButton.addActionListener(new ActionListener() {
-    		public void actionPerformed(ActionEvent e) { start(100); }
+    		public void actionPerformed(ActionEvent e) { start(4000); }
     	});
     }
     
