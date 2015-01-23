@@ -11,22 +11,22 @@ import java.util.Random;
  */
 public class Penguin extends Animal
 {
-    // Characteristics shared by all foxes (class variables).
+    // Characteristics shared by all penguins (class variables).
     
     // The age at which a fox can start to breed.
-    private static final int BREEDING_AGE = 10;
+    private static final int BREEDING_AGE = 8;
     // The age to which a fox can live.
-    private static final int MAX_AGE = 30;
+    private static final int MAX_AGE = 28;
     // The likelihood of a fox breeding.
-    private static final double BREEDING_PROBABILITY = 0.08;
+    private static final double BREEDING_PROBABILITY = 0.06;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 2;
     // The food value of a single rabbit. In effect, this is the
     // number of steps a fox can go before it has to eat again.
-    private static final int RABBIT_FOOD_VALUE = 2;
+    private static final int RABBIT_FOOD_VALUE = 5;
     // The food value of a single fox.  In effect, this is the 
     // number of steps a penguin can go before it has to eat again.
-    private static final int FOX_FOOD_VALUE = 4;
+    private static final int FOX_FOOD_VALUE = 1;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
     
@@ -126,9 +126,9 @@ public class Penguin extends Animal
                 Rabbit rabbit = (Rabbit) animal;
                 if(rabbit.isAlive()) { 
                     rabbit.setDead();
-                    if(foodLevel<FOX_FOOD_VALUE){
+                    if(foodLevel>FOX_FOOD_VALUE){
                     	foodLevel +=RABBIT_FOOD_VALUE;
-                    }else if(foodLevel>FOX_FOOD_VALUE){
+                    }else if(foodLevel<FOX_FOOD_VALUE){
                     	foodLevel = FOX_FOOD_VALUE+RABBIT_FOOD_VALUE;
                     }
                     return where;
@@ -138,9 +138,9 @@ public class Penguin extends Animal
             	Fox fox = (Fox) animal;
             	if(fox.isAlive()){
             		fox.setDead();
-                    if(foodLevel<RABBIT_FOOD_VALUE){
+                    if(foodLevel>RABBIT_FOOD_VALUE){
                     	foodLevel +=FOX_FOOD_VALUE;
-                    }else if(foodLevel>RABBIT_FOOD_VALUE){
+                    }else if(foodLevel<RABBIT_FOOD_VALUE){
                     	foodLevel = FOX_FOOD_VALUE+RABBIT_FOOD_VALUE;
                     }
             		return where;
