@@ -1,0 +1,8 @@
+/**
+ * 
+ * Public class Hunter for Vossen & Konijnen
+ *
+ */
+public class Hunter implements Actor {
+
+}

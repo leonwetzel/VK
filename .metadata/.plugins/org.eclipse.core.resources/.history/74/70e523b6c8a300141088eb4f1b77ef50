@@ -1,0 +1,9 @@
+/**
+ * 
+ * Public class Hunter for Vossen & Konijnen
+ * This hunter is a human, therefore he doesn't have to extend the superclass Animal.
+ *
+ */
+public class Hunter implements Actor {
+
+}

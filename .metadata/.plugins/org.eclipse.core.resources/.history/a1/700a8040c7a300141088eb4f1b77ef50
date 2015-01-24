@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+
+/**
+ * Public interface Actor for Vossen & Konijnen
+ *
+ */
+public interface Actor {
+
+}

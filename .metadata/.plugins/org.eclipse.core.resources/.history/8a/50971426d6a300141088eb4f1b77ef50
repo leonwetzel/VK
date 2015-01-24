@@ -1,0 +1,110 @@
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+
+/**
+ * 
+ * Public class Hunter for Vossen & Konijnen
+ * This hunter is a human, therefore he should not extend the superclass Animal.
+ *
+ * Hunters can't breed, nor can they die. Their only purpose is to kill all that
+ * stands in their way, except other hunters.
+ */
+public class Hunter implements Actor
+{
+	private Field field;
+	private Location location;
+
+	/**
+	 * Create a hunter
+	 * @param field
+	 * @param location
+	 */
+    public Hunter(Field field, Location location)
+    {
+        this.field = field;
+        setLocation(location);
+    }	
+	
+    /**
+     * Way of behavior for a hunter.
+     * @param newHunters
+     */
+    public void act(List<Actor> asd)
+    {
+        // Move towards a location where a target could be
+        Location newLocation = findTargets();
+        if(newLocation == null) { 
+            // No target found - try to move to a free location.
+            newLocation = getField().freeAdjacentLocation(getLocation());
+        }
+        // See if it was possible to move.
+        if(newLocation != null) {
+            setLocation(newLocation);
+        }
+    }
+    
+    /**
+     * Find targets
+     * @return Location
+     */
+    private Location findTargets()
+    {
+        Field field = getField();
+        List<Location> adjacent = field.adjacentLocations(getLocation());
+        Iterator<Location> it = adjacent.iterator();
+        while(it.hasNext()) {
+            Location where = it.next();
+            Object actor = field.getObjectAt(where);
+            if(actor instanceof Animal) {
+                Animal animal = (Animal) actor;
+                if(animal.isAlive()) { 
+                	animal.setDead();
+                    return where;
+                }
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Since hunters cannot die, the boolean should be always true, right?
+     * @return true
+     */
+    public boolean isAlive()
+    {
+    	return true;
+    }
+    
+    /**
+     * Return the animal's field.
+     * @return The animal's field.
+     */
+    public Field getField()
+    {
+        return field;
+    }
+    
+    /**
+     * Return the animal's location.
+     * @return The animal's location.
+     */
+    public Location getLocation()
+    {
+        return location;
+    }
+    
+    /**
+     * Place the animal at the new location in the given field.
+     * @param newLocation The animal's new location.
+     */
+    public void setLocation(Location newLocation)
+    {
+        if(location != null) {
+            field.clear(location);
+        }
+        location = newLocation;
+        field.place(this, newLocation);
+    }
+	
+}

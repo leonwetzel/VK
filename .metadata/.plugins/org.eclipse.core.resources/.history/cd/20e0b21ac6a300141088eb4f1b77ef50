@@ -1,0 +1,11 @@
+/**
+ * 
+ */
+
+/**
+ * @author leonw_000
+ *
+ */
+public interface Actor {
+
+}

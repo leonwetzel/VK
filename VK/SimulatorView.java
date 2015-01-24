@@ -16,7 +16,7 @@ import java.util.Map;
  * @author David J. Barnes and Michael Kölling
  * @version 2011.07.31
  */
-public class SimulatorView extends JFrame implements ActionListener
+public class SimulatorView extends JFrame
 {
     // Colors used for empty locations.
     private static final Color EMPTY_COLOR = Color.white;
@@ -32,10 +32,12 @@ public class SimulatorView extends JFrame implements ActionListener
     private Map<Class, Color> colors;
     // A statistics object computing and storing simulation information
     private FieldStats stats;
+    
     JButton hundredButton;
     JButton oneButton;
+    JButton resetButton;
+    JButton stopButton;
     
-    private JFrame frame2;
     /**
      * Create a view of the given width and height.
      * @param height The simulation's height.
@@ -44,19 +46,20 @@ public class SimulatorView extends JFrame implements ActionListener
     public SimulatorView(int height, int width)
     {  
     	// maak het frame en dergelijke
-    	setTitle("Foxes and Rabbits");
+    	setTitle("Vossen & Konijnen, uitgevoerd door Vrijepinguins");
         stats = new FieldStats();
         colors = new LinkedHashMap<Class, Color>();
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
-        JPanel lbuttons = new JPanel();
+        
         // maak de menubar
         makeMenuBar(this);
 
         // maak de buttons
+        JToolBar lbuttons = new JToolBar(JToolBar.VERTICAL);
         makeleftSidebarButtons(this, lbuttons);
         
-        fieldView = new FieldView(height , width);
+        fieldView = new FieldView(height, width);
         JPanel mcontent = new JPanel();
         mcontent.setPreferredSize(new Dimension(800, 550));
         mcontent.add(stepLabel, BorderLayout.NORTH);
@@ -65,7 +68,7 @@ public class SimulatorView extends JFrame implements ActionListener
         JSplitPane container = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, lbuttons, mcontent);
         container.setEnabled(false);
         getContentPane().add(container);
-        setResizable(false);
+        setResizable(true);
         pack();
         setVisible(true);
     }
@@ -84,17 +87,22 @@ public class SimulatorView extends JFrame implements ActionListener
      * Method to create the left sidebar
      * @param frame
      */
-    public void makeleftSidebarButtons(JFrame frame, JPanel lbuttons)
-    {
-    	// maak buttons en voeg de ActionListener toe
+    public void makeleftSidebarButtons(JFrame frame, JToolBar lbuttons)
+    {  	
+    	
         oneButton = new JButton("Step 1");
-        //oneButton.addActionListener(this);
-        hundredButton = new JButton("Step 4000");
-        //hundredButton.addActionListener(this);
         
-        lbuttons.setPreferredSize(new Dimension(100, 300));
+        hundredButton = new JButton("Step 4000");
+        
+        resetButton = new JButton("Reset");
+        
+        stopButton = new JButton("Pause");     
+        
         lbuttons.add(oneButton);
-        lbuttons.add(hundredButton);    		
+        lbuttons.add(hundredButton);  
+        lbuttons.add(resetButton);
+        lbuttons.add(stopButton);
+        
     }
     
     /**
@@ -102,7 +110,7 @@ public class SimulatorView extends JFrame implements ActionListener
      * @param frame
      */
     public void makeMenuBar(JFrame frame)
-    {
+    {	
         JMenuBar mbar = new JMenuBar();
         JMenu menu1 = new JMenu("Menu 1");
         JMenu menu2 = new JMenu("Menu 2");
@@ -112,31 +120,7 @@ public class SimulatorView extends JFrame implements ActionListener
         mbar.add(menu3);
         setJMenuBar(mbar);    	
     }
-    public ActionEvent getButton(ActionEvent e){
-    	return e;
-    }
-    /**
-     * Perform actions, according to the button pressed
-     */
-     public void actionPerformed(ActionEvent e) {
-		if (e.getSource()==oneButton) {
-			System.out.println("one button werkt");
-		}
-		
-		if (e.getSource()== hundredButton) {
-			System.out.println("hundred button werkt");
-		}
-	 }
-
-    /*public void actionPerformed(ActionEvent e) {
-		if (e.getSource()==oneStep) {
-			simulateOneStep();
-		}
-		
-		if (e.getSource()== fourThousandStep) {
-			runLongSimulation(); 
-		}
-	}*/
+     
     /**
      * @return The color to be used for a given class of animal.
      */

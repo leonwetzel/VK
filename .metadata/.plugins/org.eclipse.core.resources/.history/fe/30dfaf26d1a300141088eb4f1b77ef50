@@ -1,0 +1,35 @@
+import java.util.List;
+import java.util.Random;
+
+/**
+ * 
+ * Public class Hunter for Vossen & Konijnen
+ * This hunter is a human, therefore he should not extend the superclass Animal.
+ *
+ * Hunters can't breed, nor can they die. Their only purpose is to kill all that
+ * stands in their way, except other hunters.
+ */
+public class Hunter implements Actor
+{
+
+	/**
+	 * Create a hunter
+	 * @param field
+	 * @param location
+	 */
+    public Hunter(Field field, Location location)
+    {
+        //this.field = field;
+        //setLocation(location);
+    }	
+	
+    /**
+     * Way of behavior for a hunter.
+     * @param newHunters
+     */
+    public void act(List<Actor> asd)
+    {
+
+    }
+	
+}

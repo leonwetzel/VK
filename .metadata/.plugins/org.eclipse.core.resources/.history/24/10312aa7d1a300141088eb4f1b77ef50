@@ -1,0 +1,13 @@
+import java.util.List;
+
+/**
+ * Public interface Actor for Vossen & Konijnen
+ * Contains a set of methods for all actors in the simulator
+ *
+ */
+public interface Actor {
+	// general method act for all actors in the simulator
+	public void act(List<Actor> newActors);
+	// return if the actor is alive
+	public boolean isALive();
+}

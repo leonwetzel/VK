@@ -1,0 +1,11 @@
+/**
+ * 
+ * Public class Hunter for Vossen & Konijnen
+ * This hunter is a human, therefore he doesn't have to extend the superclass Animal.
+ *
+ * Hunters don't have to breed, nor can they die. Their only purpose is to kill all that
+ * stands in their way, except other hunters.
+ */
+public class Hunter implements Actor {
+	
+}

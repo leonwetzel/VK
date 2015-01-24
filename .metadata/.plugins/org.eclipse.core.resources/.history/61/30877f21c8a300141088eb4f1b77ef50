@@ -1,0 +1,13 @@
+/**
+ * 
+ */
+
+/**
+ * Public interface Actor for Vossen & Konijnen
+ * Contains a set of methods for all actors in the simulator
+ *
+ */
+public interface Actor {
+	public void act(List<Animal> animals);
+	
+}

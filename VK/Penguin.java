@@ -64,12 +64,12 @@ public class Penguin extends Animal
      * @param field The field currently occupied.
      * @param newFoxes A list to return newly born foxes.
      */
-    public void act(List<Animal> newPenguins)
+    public void act(List<Actor> newPinguins)
     {
         incrementAge();
         incrementHunger();
         if(isAlive()) {
-            giveBirth(newPenguins);            
+            giveBirth(newPinguins);            
             // Move towards a source of food if found.
             Location newLocation = findFood();
             if(newLocation == null) { 
@@ -156,7 +156,7 @@ public class Penguin extends Animal
      * New births will be made into free adjacent locations.
      * @param newPenguin A list to return newly born foxes.
      */
-    private void giveBirth(List<Animal> newPenguin)
+    private void giveBirth(List<Actor> newPenguin)
     {
         // New Penguin are born into adjacent locations.
         // Get a list of adjacent free locations.

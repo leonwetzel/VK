@@ -17,7 +17,7 @@ import java.awt.event.*;
  * 
  * Questions regarding code or development process? Please send an e-mail to l.f.a.wetzel@st.hanze.nl.
  */
-public class Simulator implements Runnable{
+public class Simulator implements Runnable {
     // Constants representing configuration information for the simulation.
     // The default width for the grid.
     private static final int DEFAULT_WIDTH = 120;
@@ -29,11 +29,13 @@ public class Simulator implements Runnable{
     private static final double RABBIT_CREATION_PROBABILITY = 0.08; 
     // The probability that a penguin will be created in any given grid position.
     private static final double PENGUIN_CREATION_PROBABILITY = 0.01;
-    // the delay between each frame (you may remove static final)
+    // The probability that a hunter will be created in any given grid position.
+    private static final double HUNTER_CREATION_PROBABILITY = 0.01;
+    // the delay between each frame
     private static final int THREAD_DELAY = 100;
 
     // List of animals in the field.
-    private List<Animal> animals;
+    private List<Actor> actors;
     // The current state of the field.
     private Field field;
     // The current step of the simulation.
@@ -68,7 +70,7 @@ public class Simulator implements Runnable{
             width = DEFAULT_WIDTH;
         }
         
-        animals = new ArrayList<Animal>();
+        actors = new ArrayList<Actor>();
         field = new Field(depth, width);
 
         // Create a view of the state of each location in the field.
@@ -76,6 +78,7 @@ public class Simulator implements Runnable{
         view.setColor(Rabbit.class, Color.ORANGE);
         view.setColor(Fox.class, Color.BLUE);
         view.setColor(Penguin.class, Color.RED);
+        view.setColor(Hunter.class, Color.BLACK);
         
         // Add the actionlisteners
         addListeners();
@@ -90,10 +93,11 @@ public class Simulator implements Runnable{
     public void runLongSimulation()
     {
         simulate(100);
-        
     }
     
-    //TODO; foei dit moet in een aparte klasse
+    /**
+     * Make the buttons interactive!
+     */
     public void addListeners()
     {
     	view.oneButton.addActionListener(new ActionListener() {
@@ -101,6 +105,12 @@ public class Simulator implements Runnable{
         });
     	view.hundredButton.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) { start(4000); }
+    	});
+    	view.resetButton.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent e) { reset(); }
+    	});
+    	view.stopButton.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent e) { stop(); }
     	});
     }
     
@@ -126,18 +136,18 @@ public class Simulator implements Runnable{
         step++;
 
         // Provide space for newborn animals.
-        List<Animal> newAnimals = new ArrayList<Animal>();        
+        List<Actor> newActors = new ArrayList<Actor>();        
         // Let all rabbits act.
-        for(Iterator<Animal> it = animals.iterator(); it.hasNext(); ) {
-            Animal animal = it.next();
-            animal.act(newAnimals);
-            if(! animal.isAlive()) {
+        for(Iterator<Actor> it = actors.iterator(); it.hasNext(); ) {
+        	Actor actor = it.next();
+        	actor.act(newActors);
+            if(!actor.isAlive()) {
                 it.remove();
             }
         }
                
-        // Add the newly born foxes and rabbits to the main lists.
-        animals.addAll(newAnimals);
+        // Add new actors to the main lists.
+        actors.addAll(newActors);
 
         view.showStatus(step, field);
     }
@@ -148,15 +158,18 @@ public class Simulator implements Runnable{
     public void reset()
     {
         step = 0;
-        animals.clear();
+        actors.clear();
         populate();
         
         // Show the starting state in the view.
         view.showStatus(step, field);
+        
+        // stop the thread (to prevent the simulation from auto-restarting)
+        stop();
     }
     
     /**
-     * Randomly populate the field with foxes and rabbits.
+     * Randomly populate the field with actors.
      */
     private void populate()
     {
@@ -167,16 +180,19 @@ public class Simulator implements Runnable{
                 if(rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
                     Fox fox = new Fox(true, field, location);
-                    animals.add(fox);
-                }
-                else if(rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
+                    actors.add(fox);
+                } else if(rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
                     Location location = new Location(row, col);
                     Rabbit rabbit = new Rabbit(true, field, location);
-                    animals.add(rabbit);
-                }else if(rand.nextDouble()<= PENGUIN_CREATION_PROBABILITY){
+                    actors.add(rabbit);
+                } else if(rand.nextDouble()<= PENGUIN_CREATION_PROBABILITY){
                 	Location location = new Location(row, col);
                 	Penguin penguin = new Penguin(true,field,location);
-                	animals.add(penguin);
+                	actors.add(penguin);
+                } else if(rand.nextDouble() <= HUNTER_CREATION_PROBABILITY) {
+                	Location location = new Location(row, col);
+                	Hunter hunter = new Hunter(field, location);
+                	actors.add(hunter);
                 }
                 // else leave the location empty.
             }
@@ -201,6 +217,9 @@ public class Simulator implements Runnable{
     	running = false;
     }
     
+    /**
+     * Decrement one step
+     */
     public void decrementSteps(){
     	if (threadStep > 0){
     		threadStep--;

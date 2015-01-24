@@ -1,4 +1,10 @@
-
+/**
+ * 
+ * This class is part of the Vossen & Konijnen Project by Jesse Stal, Paul Koning,
+ * Michaël van der Veen and Leon Wetzel. Don't steal this work. 
+ * 
+ * Questions regarding code or development process? Please send an e-mail to l.f.a.wetzel@st.hanze.nl.
+ */
 public class Main {
 	
 	private Simulator simulator;
@@ -13,7 +19,7 @@ public class Main {
 	}
 	
 	/**
-	 * set the simulator (brain)
+	 * set de simulator
 	 * @param simulator 
 	 */
 	private void setSimulator(Simulator simulator){
@@ -21,7 +27,7 @@ public class Main {
 	}
 	
 	/**
-	 * get the simulator (brain)
+	 * getter voor simulator
 	 * @return Simulator 
 	 */
 	private Simulator getSimulator(){
