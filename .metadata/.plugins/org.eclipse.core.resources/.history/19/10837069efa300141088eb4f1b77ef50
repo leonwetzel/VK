@@ -15,8 +15,7 @@ public class Hunter implements Actor
 {
 	private Field field;
 	private Location location;
-	// hunters can't die, therefore the variable can be regarded as a constant
-	private static final boolean ALIVE = true;
+	private boolean alive = true;
 
 	/**
 	 * Create a hunter
@@ -78,7 +77,7 @@ public class Hunter implements Actor
      */
     public boolean isAlive()
     {
-    	return ALIVE;
+    	return alive;
     }
     
     /**

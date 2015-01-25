@@ -65,8 +65,6 @@ public class Simulator implements Runnable {
     {
     	// create the main display
     	makeSimPanel(depth, width);
-    	// create the histogram view
-    	//makeHistogram();
     }
     
     /**

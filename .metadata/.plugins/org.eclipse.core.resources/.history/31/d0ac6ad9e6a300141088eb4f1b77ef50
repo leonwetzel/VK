@@ -28,7 +28,6 @@ public class Main {
 	
 	/**
 	 * getter voor simulator
-	 * overbodig?
 	 * @return Simulator 
 	 */
 	private Simulator getSimulator(){

@@ -33,7 +33,6 @@ public class SimulatorView extends JFrame
     // A statistics object computing and storing simulation information
     private FieldStats stats;
     
-    // buttons
     JButton hundredButton;
     JButton oneButton;
     JButton resetButton;
@@ -90,6 +89,7 @@ public class SimulatorView extends JFrame
      */
     public void makeleftSidebarButtons(JFrame frame, JToolBar lbuttons)
     {  	
+    	
         oneButton = new JButton("Step 1");
         
         hundredButton = new JButton("Step 4000");
