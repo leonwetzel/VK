@@ -1,0 +1,43 @@
+import java.io.*;
+import java.net.URL;
+import javax.sound.sampled.*;
+
+/**
+ * Class for the background music in the simulator
+ * @author leonwetzel
+ *
+ */
+public class MusicPlayer {
+	
+	/**
+	 * Constructor
+	 */
+	public MusicPlayer()
+	{
+		playMusic();	  
+	}
+	
+	/**
+	 * Method to play music
+	 */
+	public void playMusic()
+	{
+	    try {
+	        // Haal het audiobestand op
+	    	URL url = new URL("http://www.peterjager.net/gvb/halteafroep/marc_klardie/dit%20is%20lijn%203%20richting%20muiderpoortstation.wav");
+	        AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+	        // Ontleed het bestand voor gebruik
+	        Clip clip = AudioSystem.getClip();
+	        // Laad het bestand in het programma
+	        clip.open(audioIn);
+	        // Speel het bestand 25 opeenvolgende keren af
+	        clip.loop(25);
+	     } catch (UnsupportedAudioFileException e) {
+	        e.printStackTrace();
+	     } catch (IOException e) {
+	        e.printStackTrace();
+	     } catch (LineUnavailableException e) {
+	        e.printStackTrace();
+	     }		
+	}
+}

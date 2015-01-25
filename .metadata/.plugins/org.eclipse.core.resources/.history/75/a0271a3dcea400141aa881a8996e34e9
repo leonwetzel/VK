@@ -1,0 +1,61 @@
+import java.io.*;
+import java.net.URL;
+import javax.sound.sampled.*;
+
+/**
+ * Class for the background music in the simulator
+ * @author leonwetzel
+ *
+ */
+public class MusicPlayer {
+	
+	private Clip clip;
+	
+	/**
+	 * Constructor
+	 */
+	public MusicPlayer()
+	{
+		prepareAudio();  
+	}
+	
+	/**
+	 * Method to play music
+	 */
+	public void playMusic()
+	{
+
+	}
+	
+	/**
+	 * Method to stop the music
+	 */
+	public void stopMusic()
+	{
+		
+	}
+	
+	/**
+	 * Get the audio file
+	 */
+	public void prepareAudio()
+	{
+	    try {
+	        // Haal het audiobestand op
+	    	URL url = new URL("http://www.leonwetzel.bplaced.net/sonata.wav");
+	        AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+	        // Ontleed het bestand voor gebruik
+	        clip = AudioSystem.getClip();
+	        // Laad het bestand in het programma
+	        clip.open(audioIn);
+	        // Speel het bestand 25 opeenvolgende keren af
+	        //clip.start();
+	     } catch (UnsupportedAudioFileException e) {
+	        e.printStackTrace();
+	     } catch (IOException e) {
+	        e.printStackTrace();
+	     } catch (LineUnavailableException e) {
+	        e.printStackTrace();
+	     }				
+	}
+}
