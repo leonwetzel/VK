@@ -24,10 +24,11 @@ public class MusicPlayer {
 	
 	/**
 	 * Method to play music
+	 * Please note that the track is playing in an infinite loop!
 	 */
 	public void playMusic()
 	{
-		clip.start();
+		clip.loop(clip.LOOP_CONTINUOUSLY);
 	}
 	
 	/**
@@ -45,15 +46,13 @@ public class MusicPlayer {
 	{
 	    try {
 	        // Haal het audiobestand op
-	    	File soundFile = new File("sonata.wav");
+	    	File soundFile = new File("fox_song.wav");
 	    	//URL url = new URL("sonata.wav");
 	        AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
 	        // Ontleed het bestand voor gebruik
 	        clip = AudioSystem.getClip();
 	        // Laad het bestand in het programma
 	        clip.open(audioIn);
-	        // Speel het bestand 25 opeenvolgende keren af
-	        //clip.start();
 	     } catch (UnsupportedAudioFileException e) {
 	        e.printStackTrace();
 	     } catch (IOException e) {

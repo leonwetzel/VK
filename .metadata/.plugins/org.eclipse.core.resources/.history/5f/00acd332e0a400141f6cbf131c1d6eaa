@@ -1,0 +1,18 @@
+import java.awt.Color;
+
+/**
+ * Klasse CirkelDeel voor Vossen & Konijnen
+ * @author leonwetzel
+ *
+ */
+public class CirkelDeel {
+	
+	   double value;
+	   Color color;
+	   
+	   public CirkelDeel(double value, Color color)
+	   {  
+	      this.value = value;
+	      this.color = color;
+	   }
+}

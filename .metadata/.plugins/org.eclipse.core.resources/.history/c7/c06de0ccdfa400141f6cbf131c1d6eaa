@@ -1,0 +1,63 @@
+import java.io.*;
+import javax.sound.sampled.*;
+
+/**
+ * Class for the background music in the simulator
+ * @author leonwetzel
+ *
+ * Special thanks go out to the one who published his/her notes
+ * at http://www3.ntu.edu.sg/home/ehchua/programming/java/J8c_PlayingSound.html
+ * 
+ */
+public class MusicPlayer {
+	
+	private Clip clip;
+	
+	/**
+	 * Constructor
+	 */
+	public MusicPlayer()
+	{
+		// prepare the audio file
+		prepareAudio();  
+	}
+	
+	/**
+	 * Method to play music
+	 */
+	public void playMusic()
+	{
+		clip.loop(clip.LOOP_CONTINUOUSLY);
+	}
+	
+	/**
+	 * Method to stop the music
+	 */
+	public void stopMusic()
+	{
+		clip.stop();
+	}
+	
+	/**
+	 * Get the audio file
+	 */
+	public void prepareAudio()
+	{
+	    try {
+	        // Haal het audiobestand op
+	    	File soundFile = new File("sonata.wav");
+	    	//URL url = new URL("sonata.wav");
+	        AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+	        // Ontleed het bestand voor gebruik
+	        clip = AudioSystem.getClip();
+	        // Laad het bestand in het programma
+	        clip.open(audioIn);
+	     } catch (UnsupportedAudioFileException e) {
+	        e.printStackTrace();
+	     } catch (IOException e) {
+	        e.printStackTrace();
+	     } catch (LineUnavailableException e) {
+	        e.printStackTrace();
+	     }				
+	}
+}

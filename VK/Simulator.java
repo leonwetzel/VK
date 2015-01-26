@@ -99,7 +99,7 @@ public class Simulator implements Runnable {
         // Setup a valid starting point.
         reset();
         
-        // let the background music play
+        // Play the background music
         MusicPlayer player = new MusicPlayer();
         player.playMusic();
     }
@@ -244,6 +244,10 @@ public class Simulator implements Runnable {
     	}
     }
     
+    /**
+     * Make simulator steps equal to the steps the thread makes in this class
+     * In other words: let the simulator run steps ;)
+     */
 	@Override
 	public void run() {
 		while (running){

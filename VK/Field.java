@@ -62,9 +62,9 @@ public class Field
      * @param row Row coordinate of the location.
      * @param col Column coordinate of the location.
      */
-    public void place(Object animal, int row, int col)
+    public void place(Object actor, int row, int col)
     {
-        place(animal, new Location(row, col));
+        place(actor, new Location(row, col));
     }
     
     /**
@@ -74,9 +74,9 @@ public class Field
      * @param animal The animal to be placed.
      * @param location Where to place the animal.
      */
-    public void place(Object animal, Location location)
+    public void place(Object actor, Location location)
     {
-        field[location.getRow()][location.getCol()] = animal;
+        field[location.getRow()][location.getCol()] = actor;
     }
     
     /**

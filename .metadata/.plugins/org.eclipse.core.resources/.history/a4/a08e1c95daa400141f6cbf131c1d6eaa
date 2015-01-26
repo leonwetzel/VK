@@ -1,0 +1,45 @@
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+
+/**
+ * Class for displaying simulation data in a pie chart
+ * 
+ * @author leonwetzel
+ *
+ */
+public class Cirkeldiagram extends JComponent {
+
+	CirkelDeel[] slices = { new CirkelDeel(5, Color.black),
+			new CirkelDeel(33, Color.green), new CirkelDeel(20, Color.yellow),
+			new CirkelDeel(15, Color.red) };
+
+	Cirkeldiagram() {
+
+	}
+
+	public void paint(Graphics g) {
+		drawPie((Graphics2D) g, getBounds(), slices);
+	}
+
+	public void drawPie(Graphics2D g, Rectangle area, CirkelDeel[] slices) {
+		double total = 0.0D;
+		for (int i = 0; i < slices.length; i++) {
+			total += slices[i].value;
+		}
+		double curValue = 0.0D;
+		int startAngle = 0;
+		for (int i = 0; i < slices.length; i++) {
+			startAngle = (int) (curValue * 360 / total);
+			int arcAngle = (int) (slices[i].value * 360 / total);
+			g.setColor(slices[i].color);
+			g.fillArc(area.x, area.y, area.width, area.height, startAngle,
+					arcAngle);
+			curValue += slices[i].value;
+		}
+	}
+}

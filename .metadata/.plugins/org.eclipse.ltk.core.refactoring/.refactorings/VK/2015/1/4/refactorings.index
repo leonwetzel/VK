@@ -1,3 +1,9 @@
 1422211022416	Delete elements
 1422211033261	Delete element
 1422211859185	Delete element
+1422222075470	Rename compilation unit 'Cirkeldiagram.java'
+1422222417304	Rename field 'slices'
+1422222429999	Rename local variable 'slices'
+1422222506604	Rename local variable 'area'
+1422224624416	Rename local variable 'total'
+1422225453866	Rename compilation unit 'PieChart.java'
