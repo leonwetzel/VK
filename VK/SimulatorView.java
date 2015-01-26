@@ -1,5 +1,6 @@
 import java.awt.*;
 
+
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -38,6 +39,10 @@ public class SimulatorView extends JFrame
     JButton oneButton;
     JButton resetButton;
     JButton stopButton;
+    JButton userInput;
+    
+    //JFrame
+    JFrame aInput;
     
     /**
      * Create a view of the given width and height.
@@ -47,6 +52,7 @@ public class SimulatorView extends JFrame
     public SimulatorView(int height, int width)
     {  
     	// maak het frame en dergelijke
+    	setLocation(410, 0);
     	setTitle("Vossen & Konijnen, uitgevoerd door Vrijepinguins");
         stats = new FieldStats();
         colors = new LinkedHashMap<Class, Color>();
@@ -59,6 +65,9 @@ public class SimulatorView extends JFrame
         // maak de buttons
         JToolBar lbuttons = new JToolBar(JToolBar.VERTICAL);
         makeleftSidebarButtons(this, lbuttons);
+        
+        //maak invoervelden voor de verschillende dieren
+        
         
         fieldView = new FieldView(height, width);
         JPanel mcontent = new JPanel();
@@ -74,6 +83,73 @@ public class SimulatorView extends JFrame
         setVisible(true);
     }
     
+    public void inputFrame(){
+    	JFrame frame = new JFrame("Diereigenschappen");
+    	JPanel container = new JPanel();
+    	container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setLayout(new BorderLayout());
+        
+        //new grid for fox property inputs
+        JPanel cFox = new JPanel();
+        cFox.setLayout(new BorderLayout());
+        JPanel gridLayoutPane = new JPanel(); 
+        GridLayout gridLayout = new GridLayout(3,2);
+        gridLayoutPane.setLayout(gridLayout);
+        
+        JLabel mAge = new JLabel("Max Leeftijd");
+        JLabel aNak = new JLabel("Aantal nakomelingen");
+        JLabel vLef = new JLabel("Voortplantingsleeftijd");
+        JLabel animalLabel = new JLabel("Fox Eigenschappen:");
+        
+        JTextField mAgeField = new JTextField();
+        JTextField aNakField = new JTextField();
+        JTextField vLefField = new JTextField();
+        
+        gridLayoutPane.add(mAge);
+        gridLayoutPane.add(mAgeField);
+        gridLayoutPane.add(vLef);
+        gridLayoutPane.add(vLefField);
+        gridLayoutPane.add(aNak);
+        gridLayoutPane.add(aNakField);
+        cFox.add(gridLayoutPane, BorderLayout.CENTER);
+        cFox.add(animalLabel, BorderLayout.NORTH);
+        container.add(cFox);
+        container.add(Box.createRigidArea(new Dimension(0,10)));
+        
+        
+        //new grid for rabbit property inputs
+        JPanel cRabbit = new JPanel();
+        cRabbit.setLayout(new BorderLayout());
+        JPanel gridLayoutPane2 = new JPanel(); 
+        GridLayout gridLayout2 = new GridLayout(3,2);
+        gridLayoutPane2.setLayout(gridLayout2);
+        
+        JLabel mAge2 = new JLabel("Max Leeftijd");
+        JLabel aNak2 = new JLabel("Aantal nakomelingen");
+        JLabel vLef2 = new JLabel("Voortplantingsleeftijd");
+        JLabel animalLabel2 = new JLabel("Rabbit Eigenschappen:");
+        
+        JTextField mAgeField2 = new JTextField();
+        JTextField aNakField2 = new JTextField();
+        JTextField vLefField2 = new JTextField();
+        
+        gridLayoutPane2.add(mAge2);
+        gridLayoutPane2.add(mAgeField2);
+        gridLayoutPane2.add(vLef2);
+        gridLayoutPane2.add(vLefField2);
+        gridLayoutPane2.add(aNak2);
+        gridLayoutPane2.add(aNakField2);
+        cRabbit.add(gridLayoutPane2, BorderLayout.CENTER);
+        cRabbit.add(animalLabel2, BorderLayout.NORTH);
+        container.add(cRabbit);
+        
+        frame.add(container);
+
+
+        frame.pack();
+        frame.setVisible(true);
+    }
     /**
      * Define a color to be used for a given class of animal.
      * @param animalClass The animal's Class object.
@@ -98,10 +174,13 @@ public class SimulatorView extends JFrame
         
         stopButton = new JButton("Pause");     
         
+        userInput = new JButton("Animal Input");
+        
         lbuttons.add(oneButton);
         lbuttons.add(hundredButton);  
         lbuttons.add(resetButton);
         lbuttons.add(stopButton);
+        lbuttons.add(userInput);
         
     }
     

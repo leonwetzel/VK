@@ -101,7 +101,7 @@ public class Simulator implements Runnable {
         
         // Play the background music
         MusicPlayer player = new MusicPlayer();
-        player.playMusic();
+        //player.playMusic();
     }
     
     /**
@@ -129,6 +129,9 @@ public class Simulator implements Runnable {
     	});
     	view.stopButton.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) { stop(); }
+    	});
+    	view.userInput.addActionListener(new ActionListener() {
+    		public void actionPerformed(ActionEvent e) { view.inputFrame(); }
     	});
     }
     
