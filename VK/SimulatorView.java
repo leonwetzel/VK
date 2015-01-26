@@ -41,8 +41,9 @@ public class SimulatorView extends JFrame
     JButton stopButton;
     JButton userInput;
     
-    //JFrame
+    //JFrames
     JFrame aInput;
+    JPanel container;
     
     /**
      * Create a view of the given width and height.
@@ -86,41 +87,32 @@ public class SimulatorView extends JFrame
     
     public void inputFrame(){
     	JFrame frame = new JFrame("Diereigenschappen");
-    	JPanel container = new JPanel();
+    	container = new JPanel();
     	container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.setLayout(new BorderLayout());
-        
         //new grid for fox property inputs
-        JPanel cFox = new JPanel();
-        cFox.setLayout(new BorderLayout());
-        JPanel gridLayoutPane = new JPanel(); 
-        GridLayout gridLayout = new GridLayout(3,2);
-        gridLayoutPane.setLayout(gridLayout);
-        
-        JLabel mAge = new JLabel("Max Leeftijd");
-        JLabel aNak = new JLabel("Aantal nakomelingen");
-        JLabel vLef = new JLabel("Voortplantingsleeftijd");
-        JLabel animalLabel = new JLabel("Fox Eigenschappen:");
-        
-        JTextField mAgeField = new JTextField();
-        JTextField aNakField = new JTextField();
-        JTextField vLefField = new JTextField();
-        
-        gridLayoutPane.add(mAge);
-        gridLayoutPane.add(mAgeField);
-        gridLayoutPane.add(vLef);
-        gridLayoutPane.add(vLefField);
-        gridLayoutPane.add(aNak);
-        gridLayoutPane.add(aNakField);
-        cFox.add(gridLayoutPane, BorderLayout.CENTER);
-        cFox.add(animalLabel, BorderLayout.NORTH);
-        container.add(cFox);
-        container.add(Box.createRigidArea(new Dimension(0,10)));
-        
-        
+        foxProperties();
         //new grid for rabbit property inputs
-        JPanel cRabbit = new JPanel();
+        rabbitProperties();
+        //new grid for penguin property inputs
+        penguinProperties();
+        frame.add(container);
+        frame.pack();
+        frame.setResizable(false);
+        frame.setVisible(true);
+    }
+    /**
+     * Define a color to be used for a given class of animal.
+     * @param animalClass The animal's Class object.
+     * @param color The color to be used for the given class.
+     */
+    public void setColor(Class animalClass, Color color)
+    {
+        colors.put(animalClass, color);
+    }
+    
+    public void rabbitProperties(){
+    	JPanel cRabbit = new JPanel();
         cRabbit.setLayout(new BorderLayout());
         JPanel gridLayoutPane2 = new JPanel(); 
         GridLayout gridLayout2 = new GridLayout(3,2);
@@ -144,21 +136,63 @@ public class SimulatorView extends JFrame
         cRabbit.add(gridLayoutPane2, BorderLayout.CENTER);
         cRabbit.add(animalLabel2, BorderLayout.NORTH);
         container.add(cRabbit);
-        
-        frame.add(container);
-
-
-        frame.pack();
-        frame.setVisible(true);
+        container.add(Box.createRigidArea(new Dimension(0,10)));
     }
-    /**
-     * Define a color to be used for a given class of animal.
-     * @param animalClass The animal's Class object.
-     * @param color The color to be used for the given class.
-     */
-    public void setColor(Class animalClass, Color color)
-    {
-        colors.put(animalClass, color);
+    
+    public void penguinProperties(){
+    	JPanel cPenguin = new JPanel();
+        cPenguin.setLayout(new BorderLayout());
+        JPanel gridLayoutPane3 = new JPanel(); 
+        GridLayout gridLayout3 = new GridLayout(3,2);
+        gridLayoutPane3.setLayout(gridLayout3);
+        
+        JLabel mAge3 = new JLabel("Max Leeftijd");
+        JLabel aNak3 = new JLabel("Aantal nakomelingen");
+        JLabel vLef3 = new JLabel("Voortplantingsleeftijd");
+        JLabel animalLabel3 = new JLabel("Penguin Eigenschappen:");
+        
+        JTextField mAgeField3 = new JTextField();
+        JTextField aNakField3 = new JTextField();
+        JTextField vLefField3 = new JTextField();
+        
+        gridLayoutPane3.add(mAge3);
+        gridLayoutPane3.add(mAgeField3);
+        gridLayoutPane3.add(vLef3);
+        gridLayoutPane3.add(vLefField3);
+        gridLayoutPane3.add(aNak3);
+        gridLayoutPane3.add(aNakField3);
+        cPenguin.add(gridLayoutPane3, BorderLayout.CENTER);
+        cPenguin.add(animalLabel3, BorderLayout.NORTH);
+        container.add(cPenguin);
+        container.add(Box.createRigidArea(new Dimension(0,10)));
+    }
+    
+    public void foxProperties(){
+    	 JPanel cFox = new JPanel();
+         cFox.setLayout(new BorderLayout());
+         JPanel gridLayoutPane = new JPanel(); 
+         GridLayout gridLayout = new GridLayout(3,2);
+         gridLayoutPane.setLayout(gridLayout);
+         
+         JLabel mAge = new JLabel("Max Leeftijd");
+         JLabel aNak = new JLabel("Aantal nakomelingen");
+         JLabel vLef = new JLabel("Voortplantingsleeftijd");
+         JLabel animalLabel = new JLabel("Fox Eigenschappen:");
+         
+         JTextField mAgeField = new JTextField();
+         JTextField aNakField = new JTextField();
+         JTextField vLefField = new JTextField();
+         
+         gridLayoutPane.add(mAge);
+         gridLayoutPane.add(mAgeField);
+         gridLayoutPane.add(vLef);
+         gridLayoutPane.add(vLefField);
+         gridLayoutPane.add(aNak);
+         gridLayoutPane.add(aNakField);
+         cFox.add(gridLayoutPane, BorderLayout.CENTER);
+         cFox.add(animalLabel, BorderLayout.NORTH);
+         container.add(cFox);
+         container.add(Box.createRigidArea(new Dimension(0,10)));
     }
     
     /**
