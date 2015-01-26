@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -16,18 +18,32 @@ import javax.swing.JFrame;
  *
  */
 public class CirkelDiagram extends JComponent {
+	
+	private FieldStats stats = new FieldStats();
+	private HashMap<Class, Counter> counters = stats.getCounters();
+	private ArrayList<Integer> aantal = getCounts();
+	
+	private double foxCount;
+	private double rabbitCount;
+	private double pinguinCount;
+	private double hunterCount;
 
 	// hoeveelheid actors
 	private static final int HOEVEELHEID_ACTORS = 4;
 	// 'pizzastukken' van het cirkeldiagram
-	private CirkelDeel[] delen = { new CirkelDeel(5, Color.black),
-			new CirkelDeel(33, Color.green), new CirkelDeel(20, Color.yellow),
-			new CirkelDeel(15, Color.red) };
+	private CirkelDeel[] delen = { new CirkelDeel(foxCount, Color.black),
+			new CirkelDeel(rabbitCount, Color.green), new CirkelDeel(pinguinCount, Color.yellow),
+			new CirkelDeel(hunterCount, Color.red) };
 
 	/**
 	 * Constructor
 	 */
-	CirkelDiagram() {
+	public CirkelDiagram() {
+		getCounts();
+		foxCount = 10.4;//aantal.get(0);
+		rabbitCount = 15.3;//aantal.get(1);
+		pinguinCount = 49.9;//aantal.get(2);
+		hunterCount = 10.2;//aantal.get(3);		
 		CirkelDeel[] delen = new CirkelDeel[HOEVEELHEID_ACTORS];
 	}
 
@@ -37,6 +53,19 @@ public class CirkelDiagram extends JComponent {
 	 */
 	public void paint(Graphics g) {
 		drawPie((Graphics2D) g, getBounds(), delen);
+	}
+	
+	/**
+	 * Method to retrieve counts from the hashmap
+	 */
+	public ArrayList<Integer> getCounts()
+	{	
+	    for(Class key : counters.keySet()) {
+	        Counter info = counters.get(key);
+	        info.getCount();
+	        aantal.add(info.getCount());
+	    }		
+	    return aantal;
 	}
 
 	/**

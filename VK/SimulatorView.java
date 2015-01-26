@@ -75,6 +75,7 @@ public class SimulatorView extends JFrame
         setVisible(true);
     }
     
+    
     /**
      * Define a color to be used for a given class of animal.
      * @param animalClass The animal's Class object.

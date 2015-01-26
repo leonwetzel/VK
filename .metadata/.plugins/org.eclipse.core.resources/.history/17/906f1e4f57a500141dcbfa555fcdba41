@@ -1,0 +1,66 @@
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.chart.*;
+import javafx.scene.Group;
+
+/**
+ * Klasse voor cirkeldiagram. Dit is een klasse die is gebouwd volgens
+ * documentatie van Oracle.
+ * 
+ * @author leonwetzel
+ *
+ */
+public class PieChartSample extends Application {
+	
+	//private static Stage stage;
+	
+	private Counter fox;
+	private Counter rabbit;
+	private Counter pinguin;
+	private Counter hunter;
+	
+	public PieChartSample()
+	{
+		fox = new Counter("fox");
+		rabbit = new Counter("rabbit");
+		pinguin = new Counter("pinguin");
+		hunter = new Counter("hunter");	
+	}
+
+	/**
+	 * Override van de methode start() in klasse Application
+	 * Deze methode bouwt het cirkeldiagram
+	 */
+	@Override
+	public void start(Stage stage) {
+		Scene scene = new Scene(new Group());
+		stage.setTitle("Vossen & Konijnen, uitgevoerd door Vrijepinguins");
+		stage.setWidth(500);
+		stage.setHeight(500);
+		
+		int foxCount = fox.getCount();
+		int rabbitCount = rabbit.getCount();
+		int pinguinCount = pinguin.getCount();
+		int hunterCount = hunter.getCount();
+
+		ObservableList<PieChart.Data> pieChartData = FXCollections
+				.observableArrayList(new PieChart.Data("Vossen", 500),
+						new PieChart.Data("Konijnen", 307), new PieChart.Data(
+								"Pinguins", 423), new PieChart.Data("Jagers", 204));
+		
+		final PieChart chart = new PieChart(pieChartData);
+		chart.setTitle("Populatiedetails");
+
+		((Group) scene.getRoot()).getChildren().add(chart);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public static void main(String[] args)
+	{
+		launch(args);
+	}
+}
