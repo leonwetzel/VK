@@ -112,32 +112,17 @@ public class FieldStats
      * is made for the information.
      * @param field The field to generate the stats for.
      */
-    public void generateCounts(Field field)
+    private void generateCounts(Field field)
     {
         reset();
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {
-                Object actor = field.getObjectAt(row, col);
-                if(actor != null) {
-                    incrementCount(actor.getClass());
+                Object animal = field.getObjectAt(row, col);
+                if(animal != null) {
+                    incrementCount(animal.getClass());
                 }
             }
         }
         countsValid = true;
     }
-
-	/**
-	 * @return the counters
-	 */
-	public HashMap<Class, Counter> getCounters() {
-		return counters;
-	}
-
-	/**
-	 * @param counters the counters to set
-	 */
-	public void setCounters(HashMap<Class, Counter> counters) {
-		this.counters = counters;
-	}
-    
 }

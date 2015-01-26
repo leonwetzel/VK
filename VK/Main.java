@@ -8,7 +8,6 @@
 public class Main {
 	
 	private Simulator simulator;
-	private PieChartSample pie;
 	
 	/**
 	 * Main methode wordt als eerste geroepen en roept simulator aan.
@@ -17,23 +16,8 @@ public class Main {
 	public static void main(String[] args) {
 		Main main = new Main();
 		main.setSimulator(new Simulator());
-		main.setPie(new PieChartSample());
 	}
 	
-	/**
-	 * @return the pie
-	 */
-	public PieChartSample getPie() {
-		return pie;
-	}
-
-	/**
-	 * @param pie the pie to set
-	 */
-	public void setPie(PieChartSample pie) {
-		this.pie = pie;
-	}
-
 	/**
 	 * set de simulator
 	 * @param simulator 

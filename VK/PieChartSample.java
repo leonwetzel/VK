@@ -1,6 +1,3 @@
-import java.util.HashMap;
-import java.util.ArrayList;
-
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,28 +16,18 @@ import javafx.scene.Group;
 public class PieChartSample extends Application {
 	
 	//private static Stage stage;
-	private ArrayList<Integer> aantal;
 	
-	private int foxCount;
-	private int rabbitCount;
-	private int pinguinCount;
-	private int hunterCount;
-	private FieldStats stats;
-	private Field field;
+	private Counter fox;
+	private Counter rabbit;
+	private Counter pinguin;
+	private Counter hunter;
 	
-	
-	/**
-	 * Constructor for PieChartSample
-	 * Creates an ArrayList with starting values
-	 */
 	public PieChartSample()
 	{
-		stats.generateCounts(field);
-		ArrayList<Integer> aantal = getAnimalCount(field);		
-		foxCount = aantal.get(0);
-		rabbitCount = aantal.get(1);
-		pinguinCount = aantal.get(2);
-		hunterCount = aantal.get(3);		
+		fox = new Counter("fox");
+		rabbit = new Counter("rabbit");
+		pinguin = new Counter("pinguin");
+		hunter = new Counter("hunter");	
 	}
 
 	/**
@@ -53,6 +40,11 @@ public class PieChartSample extends Application {
 		stage.setTitle("Vossen & Konijnen, uitgevoerd door Vrijepinguins");
 		stage.setWidth(500);
 		stage.setHeight(500);
+		
+		int foxCount = fox.getCount();
+		int rabbitCount = rabbit.getCount();
+		int pinguinCount = pinguin.getCount();
+		int hunterCount = hunter.getCount();
 
 		ObservableList<PieChart.Data> pieChartData = FXCollections
 				.observableArrayList(new PieChart.Data("Vossen", foxCount),
@@ -67,18 +59,8 @@ public class PieChartSample extends Application {
 		stage.show();
 	}
 	
-	public ArrayList<Integer> getAnimalCount(Field field)
-	{
-		HashMap<Class, Counter> counters = stats.getCounters();
-        for(Class key : counters.keySet()) {
-            Counter info = counters.get(key);           
-            aantal.add(info.getCount());
-        }
-        return aantal;
-	}
-	
-/*	public static void main(String[] args)
+	public static void main(String[] args)
 	{
 		launch(args);
-	}*/
+	}
 }

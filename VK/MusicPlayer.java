@@ -46,7 +46,7 @@ public class MusicPlayer {
 	{
 	    try {
 	        // Haal het audiobestand op
-	    	File soundFile = new File("forest2.wav");
+	    	File soundFile = new File("fox_song.wav");
 	    	//URL url = new URL("sonata.wav");
 	        AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
 	        // Ontleed het bestand voor gebruik
