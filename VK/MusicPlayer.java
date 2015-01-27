@@ -11,15 +11,21 @@ import javax.sound.sampled.*;
  */
 public class MusicPlayer {
 	
+	// background music
 	private Clip clip;
+	// nuke sound
+	private Clip nuke;
 	
 	/**
 	 * Constructor
 	 */
 	public MusicPlayer()
 	{
-		// prepare the audio file
-		prepareAudio();  
+		// prepare the background audio file
+		prepareBackgroundGAudio();
+		// prepare the nuke audio file
+		prepareNukeSound();
+		
 	}
 	
 	/**
@@ -40,13 +46,21 @@ public class MusicPlayer {
 	}
 	
 	/**
-	 * Get the audio file
+	 * Method to play the nuke sound
 	 */
-	public void prepareAudio()
+	public void playNukeSound()
+	{
+		nuke.start();
+	}
+	
+	/**
+	 * Get the background audio file
+	 */
+	public void prepareBackgroundGAudio()
 	{
 	    try {
 	        // Haal het audiobestand op
-	    	File soundFile = new File("fox_song.wav");
+	    	File soundFile = new File("forest2.wav");
 	    	//URL url = new URL("sonata.wav");
 	        AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
 	        // Ontleed het bestand voor gebruik
@@ -60,5 +74,28 @@ public class MusicPlayer {
 	     } catch (LineUnavailableException e) {
 	        e.printStackTrace();
 	     }				
+	}
+	
+	/**
+	 * 
+	 */
+	public void prepareNukeSound()
+	{
+	    try {
+	        // Haal het audiobestand op
+	    	File soundFile = new File("nuke.wav");
+	    	//URL url = new URL("sonata.wav");
+	        AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+	        // Ontleed het bestand voor gebruik
+	        nuke = AudioSystem.getClip();
+	        // Laad het bestand in het programma
+	        nuke.open(audioIn);
+	     } catch (UnsupportedAudioFileException e) {
+	        e.printStackTrace();
+	     } catch (IOException e) {
+	        e.printStackTrace();
+	     } catch (LineUnavailableException e) {
+	        e.printStackTrace();
+	     }	
 	}
 }

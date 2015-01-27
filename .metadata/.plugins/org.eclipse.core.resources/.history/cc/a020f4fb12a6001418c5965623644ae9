@@ -1,0 +1,82 @@
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.chart.*;
+import javafx.scene.Group;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+/**
+ * Klasse voor cirkeldiagram. Dit is een klasse die is gebouwd volgens
+ * documentatie van Oracle.
+ * 
+ * @author leonwetzel
+ *
+ */
+public class PieChartSample extends Application {
+	
+	//private static Stage stage;
+	private ArrayList<Integer> aantal;
+	private HashMap<Class, Counter> counters;
+	private FieldStats stats;
+	private Field field;
+	
+	private int foxCount = 2;
+	private int rabbitCount = 5;
+	private int pinguinCount = 7;
+	private int hunterCount = 9;
+	
+	public PieChartSample()
+	{
+		FieldStats stats = getStats();
+		stats.generateCounts(field);
+		HashMap<Class, Counter> counters = new HashMap<>();
+	}
+
+	/**
+	 * Override van de methode start() in klasse Application
+	 * Deze methode bouwt het cirkeldiagram
+	 */
+	@Override
+	public void start(Stage stage) {
+		Scene scene = new Scene(new Group());
+		stage.setTitle("Vossen & Konijnen, uitgevoerd door Vrijepinguins");
+		stage.setWidth(500);
+		stage.setHeight(500);
+
+
+		ObservableList<PieChart.Data> pieChartData = FXCollections
+				.observableArrayList(new PieChart.Data("Vossen", foxCount),
+						new PieChart.Data("Konijnen", rabbitCount), new PieChart.Data(
+								"Pinguins", pinguinCount), new PieChart.Data("Jagers", hunterCount));
+		
+		final PieChart chart = new PieChart(pieChartData);
+		chart.setTitle("Populatiedetails");
+
+		((Group) scene.getRoot()).getChildren().add(chart);
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	public static void main(String[] args)
+	{
+		launch(args);
+	}
+	
+	public ArrayList<Integer> getAantalActors()
+	{
+        for(Class key : counters.keySet()) {
+            Counter info = counters.get(key);
+            aantal.add(info.getCount());
+        }
+        return aantal;
+	}
+	
+	public FieldStats getStats()
+	{
+		return stats;
+	}
+}
