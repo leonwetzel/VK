@@ -26,6 +26,11 @@ public class FieldStats
         counters = new HashMap<Class, Counter>();
         countsValid = true;
     }
+    
+    public HashMap<Class, Counter> getCounters()
+    {
+    	return counters;
+    }
 
     /**
      * Get details of what is in the field.
@@ -112,7 +117,7 @@ public class FieldStats
      * is made for the information.
      * @param field The field to generate the stats for.
      */
-    private void generateCounts(Field field)
+    public void generateCounts(Field field)
     {
         reset();
         for(int row = 0; row < field.getDepth(); row++) {

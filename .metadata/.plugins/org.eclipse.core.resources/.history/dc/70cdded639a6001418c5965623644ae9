@@ -1,0 +1,12 @@
+/**
+ * Public class for the nuclear threat, which kills everything when launched
+ * @author leonwetzel
+ *
+ */
+public class Nuke
+{
+	public Nuke()
+	{
+		
+	}
+}
