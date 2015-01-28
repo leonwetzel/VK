@@ -1,5 +1,7 @@
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
 
 /**
  * A simple model of a rabbit.
@@ -18,10 +20,16 @@ public class Rabbit extends Animal
     private static final int MAX_AGE = 40;
     // The likelihood of a rabbit breeding.
     private static final double BREEDING_PROBABILITY = 0.12;
+    // The real likelihood of a rabbit breeding.
+    private double breeding_probability;
     // The maximum number of births.
     private static final int MAX_LITTER_SIZE = 4;
     // A shared random number generator to control breeding.
     private static final Random rand = Randomizer.getRandom();
+    // 
+    private static final int GRASS_FOOD_VALUE = 6;
+    //
+    private int foodLevel;
     
     // Individual characteristics (instance fields).
     
@@ -39,10 +47,16 @@ public class Rabbit extends Animal
     public Rabbit(boolean randomAge, Field field, Location location)
     {
         super(field, location);
-        age = 0;
+        
         if(randomAge) {
             age = rand.nextInt(MAX_AGE);
+            foodLevel = rand.nextInt(GRASS_FOOD_VALUE);
         }
+        else{
+        	age = 0;
+        	foodLevel = GRASS_FOOD_VALUE;
+        }
+        breeding_probability = BREEDING_PROBABILITY;
     }
     
     /**
@@ -53,18 +67,22 @@ public class Rabbit extends Animal
     public void act(List<Actor> newRabbits)
     {
         incrementAge();
+        incrementHunger();
         if(isAlive()) {
             giveBirth(newRabbits);            
             // Try to move into a free location.
             Location newLocation = getField().freeAdjacentLocation(getLocation());
             if(newLocation != null) {
                 setLocation(newLocation);
+                findFood();
+                walk();
             }
             else {
                 // Overcrowding.
                 setDead();
             }
         }
+        
     }
 
     /**
@@ -77,6 +95,24 @@ public class Rabbit extends Animal
         if(age > MAX_AGE) {
             setDead();
         }
+    }
+    
+    private void incrementHunger()
+    {
+        foodLevel--;
+        if(foodLevel <= 2) {
+           setBreedingChance(0.00);
+        }else if(foodLevel >= GRASS_FOOD_VALUE-2){
+        	setBreedingChance(0.16);
+        }else{
+        	setBreedingChance(BREEDING_PROBABILITY);
+        }
+        	
+    }
+    
+    private void setBreedingChance(double chance)
+    {
+    	breeding_probability = chance;
     }
     
     /**
@@ -98,6 +134,20 @@ public class Rabbit extends Animal
         }
     }
         
+    private void findFood()
+    {
+    	Field field = getField();
+    	Area area = field.getSameLocation(getLocation());
+    	if(area instanceof Grass){
+	    	Grass grass = (Grass) area;
+    		int groundLevel = grass.getGroundLevel();
+	    	if(groundLevel>GRASS_FOOD_VALUE){
+	    		foodLevel = GRASS_FOOD_VALUE;
+	    		grass.beingEaten();
+	    	}
+    	}
+    }
+    
     /**
      * Generate a number representing the number of births,
      * if it can breed.
@@ -106,7 +156,7 @@ public class Rabbit extends Animal
     private int breed()
     {
         int births = 0;
-        if(canBreed() && rand.nextDouble() <= BREEDING_PROBABILITY) {
+        if(canBreed() && rand.nextDouble() <= breeding_probability) {
             births = rand.nextInt(MAX_LITTER_SIZE) + 1;
         }
         return births;

@@ -44,7 +44,17 @@ public class Hunter implements Actor
         // See if it was possible to move.
         if(newLocation != null) {
             setLocation(newLocation);
+            walk();
         }
+    }
+    
+    public void walk()
+    {
+    	Area area = getField().getSameLocation(getLocation());
+    	area.walkedOn();
+    	if(area instanceof Radiation){
+    		//setDead();
+    	}
     }
     
     /**

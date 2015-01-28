@@ -88,4 +88,13 @@ public abstract class Animal implements Actor
     {
         return field;
     }
+    
+    public void walk()
+    {
+    	Area area = getField().getSameLocation(getLocation());
+    	area.walkedOn();
+    	if(area instanceof Radiation){
+    		setDead();
+    	}
+    }
 }

@@ -76,6 +76,7 @@ public class Fox extends Animal
             // See if it was possible to move.
             if(newLocation != null) {
                 setLocation(newLocation);
+                walk();
             }
             else {
                 // Overcrowding.

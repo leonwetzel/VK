@@ -19,8 +19,10 @@ import java.util.Map;
 public class SimulatorView extends JFrame
 {
     // Colors used for empty locations.
-    private static final Color EMPTY_COLOR = Color.white;
+    private static final Color EMPTY_COLOR = Color.WHITE; //new Color(127,51,0);
+    
 
+    
     // Color used for objects that have no defined color.
     private static final Color UNKNOWN_COLOR = Color.gray;
     
@@ -161,7 +163,8 @@ public class SimulatorView extends JFrame
                     fieldView.drawMark(col, row, getColor(animal.getClass()));
                 }
                 else {
-                    fieldView.drawMark(col, row, EMPTY_COLOR);
+                	Area area = field.getAreaAt(row, col);
+                	fieldView.drawMark(col, row, area.getColor());
                 }
             }
         }

@@ -4,7 +4,7 @@
  * @author David J. Barnes and Michael Kölling
  * @version 2011.07.31
  */
-public class Location
+public class AreaLocation
 {
     // Row and column positions.
     private int row;
@@ -16,7 +16,7 @@ public class Location
      * @param row The row.
      * @param col The column.
      */
-    public Location(int row, int col)
+    public AreaLocation(int row, int col)
     {
         this.row = row;
         this.col = col;

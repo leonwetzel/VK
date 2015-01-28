@@ -36,6 +36,8 @@ public class Simulator implements Runnable {
 
     // List of animals in the field.
     private List<Actor> actors;
+    // List of Areas in the field.
+    private List<Area> areas;
     // The current state of the field.
     private Field field;
     // The current step of the simulation.
@@ -84,6 +86,7 @@ public class Simulator implements Runnable {
         }
         
         actors = new ArrayList<Actor>();
+        areas = new ArrayList<Area>();
         field = new Field(depth, width);
 
         // Create a view of the state of each location in the field.
@@ -92,6 +95,7 @@ public class Simulator implements Runnable {
         view.setColor(Fox.class, Color.BLUE);
         view.setColor(Penguin.class, Color.CYAN);
         view.setColor(Hunter.class, Color.RED);
+       // view.setColor(Grass.class,Color.GREEN);
         
         // Add the actionlisteners
         addListeners();
@@ -163,6 +167,11 @@ public class Simulator implements Runnable {
                 it.remove();
             }
         }
+        List<Area> newAreas = new ArrayList<Area>();
+        for(Iterator<Area>it = areas.iterator();it.hasNext();){
+        	Area area = it.next();
+        	area.passTime(newAreas);
+        }
                
         // Add new actors to the main lists.
         actors.addAll(newActors);
@@ -177,6 +186,7 @@ public class Simulator implements Runnable {
     {
         step = 0;
         actors.clear();
+        areas.clear();
         populate();
         
         // Show the starting state in the view.
@@ -195,24 +205,31 @@ public class Simulator implements Runnable {
         field.clear();
         for(int row = 0; row < field.getDepth(); row++) {
             for(int col = 0; col < field.getWidth(); col++) {
-                if(rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
-                    Location location = new Location(row, col);
+            	Location location = new Location(row,col);
+            	if(rand.nextDouble() <= FOX_CREATION_PROBABILITY) {
+                    //Location location = new Location(row, col);
                     Fox fox = new Fox(true, field, location);
                     actors.add(fox);
                 } else if(rand.nextDouble() <= RABBIT_CREATION_PROBABILITY) {
-                    Location location = new Location(row, col);
+                    //Location location = new Location(row, col);
                     Rabbit rabbit = new Rabbit(true, field, location);
                     actors.add(rabbit);
                 } else if(rand.nextDouble()<= PENGUIN_CREATION_PROBABILITY){
-                	Location location = new Location(row, col);
+                	//Location location = new Location(row, col);
                 	Penguin penguin = new Penguin(true,field,location);
                 	actors.add(penguin);
                 } else if(rand.nextDouble() <= HUNTER_CREATION_PROBABILITY) {
-                	Location location = new Location(row, col);
+                	//Location location = new Location(row, col);
                 	Hunter hunter = new Hunter(field, location);
                 	actors.add(hunter);
                 }
                 // else leave the location empty.
+            	
+            	AreaLocation areaLocation = new AreaLocation(row,col);
+            	Grass grass = new Grass(field,areaLocation);
+            	areas.add(grass);
+                
+                
             }
         }
     }

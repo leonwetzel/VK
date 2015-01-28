@@ -20,6 +20,11 @@ public class Field
     private int depth, width;
     // Storage for the animals.
     private Object[][] field;
+    // GrassLevel.
+    private Area[][] area;
+    //private int grassLevel;
+    // private static int grassMaxLevel = 4;
+    // private static int grassMinLevel = 0;
 
     /**
      * Represent a field of the given dimensions.
@@ -31,6 +36,8 @@ public class Field
         this.depth = depth;
         this.width = width;
         field = new Object[depth][width];
+        area = new Area[depth][width];
+        
     }
     
     /**
@@ -41,6 +48,7 @@ public class Field
         for(int row = 0; row < depth; row++) {
             for(int col = 0; col < width; col++) {
                 field[row][col] = null;
+                area[row][col] = null;
             }
         }
     }
@@ -52,6 +60,10 @@ public class Field
     public void clear(Location location)
     {
         field[location.getRow()][location.getCol()] = null;
+    }
+    public void clear(AreaLocation areaLocation)
+    {
+    	area[areaLocation.getRow()][areaLocation.getCol()] = null;
     }
     
     /**
@@ -66,6 +78,10 @@ public class Field
     {
         place(actor, new Location(row, col));
     }
+    public void placeArea(Area area,int row,int col)
+    {
+    	placeArea(area,new AreaLocation(row,col));
+    }
     
     /**
      * Place an animal at the given location.
@@ -78,6 +94,12 @@ public class Field
     {
         field[location.getRow()][location.getCol()] = actor;
     }
+    public void placeArea(Area areas, AreaLocation areaLocation)
+    {
+    	area[areaLocation.getRow()][areaLocation.getCol()] = areas;
+    }
+    
+    
     
     /**
      * Return the animal at the given location, if any.
@@ -87,6 +109,10 @@ public class Field
     public Object getObjectAt(Location location)
     {
         return getObjectAt(location.getRow(), location.getCol());
+    }
+    public Area getAreaAt(AreaLocation areaLocation)
+    {
+        return getAreaAt(areaLocation.getRow(), areaLocation.getCol());
     }
     
     /**
@@ -99,6 +125,11 @@ public class Field
     {
         return field[row][col];
     }
+    public Area getAreaAt(int row, int col)
+    {
+        return area[row][col];
+    }
+    
     
     /**
      * Generate a random location that is adjacent to the
@@ -203,4 +234,17 @@ public class Field
     {
         return width;
     }
+    
+    public Area getSameLocation(Location location){
+    	
+    	return area[location.getRow()][ location.getCol()];
+    }
+    
+    public Object getSameAreaLocation(AreaLocation areaLocation){
+    	
+    	return field[areaLocation.getRow()][ areaLocation.getCol()];
+    }
+    
+    
+    
 }
