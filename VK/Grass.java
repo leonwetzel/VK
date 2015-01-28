@@ -5,11 +5,11 @@ public class Grass extends Ground
 {
     private int groundLevel;
     private static final int GROUND_MAX_LEVEL = 10,GROUND_MIN_LEVEL=0;
-    private static final Color COLOR_ONE = new Color(127,51,0);
-    private static final Color COLOR_TWO = new Color(127,109,0);
-    private static final Color COLOR_THREE = new Color(127,170,0);
-    private static final Color COLOR_FOUR = new Color(127,209,0);
-    private static final Color COLOR_FIVE = new Color(97,244,0);
+    //private static final Color COLOR_ONE = new Color(229,181,149);//127.51.0
+    private static final Color COLOR_TWO = new Color(229,217,149);//127.109.0
+    private static final Color COLOR_THREE = new Color(209,229,149);//127.170.0
+    private static final Color COLOR_FOUR = new Color(198,229,149);//127.209.0
+    private static final Color COLOR_FIVE = new Color(181,229,149);//97.244.0
     private Color color;
     
     
@@ -27,21 +27,21 @@ public class Grass extends Ground
     	return groundLevel;
     }
     
-	public void lowerLevel(int ammount)
+	public void lowerLevel(int amount)
 	{
-    	if(groundLevel>GROUND_MIN_LEVEL+ammount)
+    	if(groundLevel>GROUND_MIN_LEVEL+amount)
 		{
-    		groundLevel=groundLevel-ammount;
+    		groundLevel-=amount;
     	}else{
     		groundLevel=0;
     	}
 	}
     
-	public void higherLevel(int ammount)
+	public void higherLevel(int amount)
 	{
-    	if(groundLevel<GROUND_MAX_LEVEL-ammount)
+    	if(groundLevel<GROUND_MAX_LEVEL-amount)
     	{
-    		groundLevel=groundLevel+ammount;
+    		groundLevel+=amount;
     	}else{
     		groundLevel=GROUND_MAX_LEVEL;
     	} 		

@@ -363,7 +363,8 @@ public class SimulatorView extends JFrame
             g.setColor(color);
             g.fillRect(x * xScale, y * yScale, xScale-1, yScale-1);
         }
-
+        
+        
         /**
          * The field view component needs to be redisplayed. Copy the
          * internal image to screen.

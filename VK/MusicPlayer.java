@@ -14,7 +14,7 @@ public class MusicPlayer {
 	// background music
 	private Clip clip;
 	// nuke sound
-	private Clip nuke;
+	//private Clip nuke;
 	
 	/**
 	 * Constructor
@@ -24,7 +24,7 @@ public class MusicPlayer {
 		// prepare the background audio file
 		prepareBackgroundGAudio();
 		// prepare the nuke audio file
-		prepareNukeSound();
+		// prepareNukeSound();
 		
 	}
 	
@@ -50,7 +50,7 @@ public class MusicPlayer {
 	 */
 	public void playNukeSound()
 	{
-		nuke.start();
+		//nuke.start();
 	}
 	
 	/**
@@ -79,7 +79,7 @@ public class MusicPlayer {
 	/**
 	 * 
 	 */
-	public void prepareNukeSound()
+	/*public void prepareNukeSound()
 	{
 	    try {
 	        // Haal het audiobestand op
@@ -97,5 +97,5 @@ public class MusicPlayer {
 	     } catch (LineUnavailableException e) {
 	        e.printStackTrace();
 	     }	
-	}
+	}*/
 }
