@@ -6,6 +6,9 @@ import javafx.stage.Stage;
 import javafx.scene.chart.*;
 import javafx.scene.Group;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * Klasse voor cirkeldiagram. Dit is een klasse die is gebouwd volgens
  * documentatie van Oracle.
@@ -16,18 +19,23 @@ import javafx.scene.Group;
 public class PieChartSample extends Application {
 	
 	//private static Stage stage;
+	private ArrayList<Integer> aantal;
+	private HashMap<Class, Counter> counters;
+	private FieldStats stats;
+	private Field field;
 	
-	private Counter fox;
-	private Counter rabbit;
-	private Counter pinguin;
-	private Counter hunter;
+	private int foxCount = 2;
+	private int rabbitCount = 5;
+	private int pinguinCount = 7;
+	private int hunterCount = 9;
 	
 	public PieChartSample()
 	{
-		fox = new Counter("fox");
-		rabbit = new Counter("rabbit");
-		pinguin = new Counter("pinguin");
-		hunter = new Counter("hunter");	
+		getAantalActors();
+		foxCount = aantal.get(0);
+		rabbitCount = aantal.get(1);
+		pinguinCount = aantal.get(2);
+		hunterCount = aantal.get(3);
 	}
 
 	/**
@@ -40,11 +48,7 @@ public class PieChartSample extends Application {
 		stage.setTitle("Vossen & Konijnen, uitgevoerd door Vrijepinguins");
 		stage.setWidth(500);
 		stage.setHeight(500);
-		
-		int foxCount = fox.getCount();
-		int rabbitCount = rabbit.getCount();
-		int pinguinCount = pinguin.getCount();
-		int hunterCount = hunter.getCount();
+
 
 		ObservableList<PieChart.Data> pieChartData = FXCollections
 				.observableArrayList(new PieChart.Data("Vossen", foxCount),
@@ -62,5 +66,19 @@ public class PieChartSample extends Application {
 	public static void main(String[] args)
 	{
 		launch(args);
+	}
+	
+	public ArrayList<Integer> getAantalActors()
+	{
+        for(Class key : counters.keySet()) {
+            Counter info = counters.get(key);
+            aantal.add(info.getCount());
+        }
+        return aantal;
+	}
+	
+	public FieldStats getStats()
+	{
+		return stats;
 	}
 }
