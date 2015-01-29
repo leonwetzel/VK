@@ -91,7 +91,7 @@ public class Simulator implements Runnable {
 
         // Create a view of the state of each location in the field.
         view = new SimulatorView(depth, width);
-        view.setColor(Rabbit.class, Color.ORANGE);
+        view.setColor(Rabbit.class, Color.RED);
         view.setColor(Fox.class, Color.BLUE);
         view.setColor(Penguin.class, Color.CYAN);
         view.setColor(Hunter.class, Color.RED);
