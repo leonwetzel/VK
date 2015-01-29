@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/leonw_000/Desktop/LiveGraph.1.14.WriterAPI.bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/leonw_000/Documents/GitHub/vk/VK/xchart-2.4.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/leonw_000/Documents/GitHub/vk/VK/xchart-demo-2.4.3.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
