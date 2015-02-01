@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="586e8b23-c8e0-4bde-9165-5377f55bcc9f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="586e8b23-c8e0-4bde-9165-5377f55bcc9f" name="Default" comment="" />
     <manually-removed-from-ignored>
       <directory path="$PROJECT_DIR$/out/" />
     </manually-removed-from-ignored>
@@ -272,7 +270,7 @@
       <file leaf-file-name="Lijndiagram.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Lijndiagram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.20428336" vertical-offset="1688" max-vertical-offset="2295">
+            <state vertical-scroll-proportion="2.5766063" vertical-offset="0" max-vertical-offset="2295">
               <caret line="92" column="40" selection-start-line="92" selection-start-column="40" selection-end-line="92" selection-end-column="40" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -928,12 +926,12 @@
       <created>1422701934485</created>
       <option name="number" value="Default" />
       <updated>1422701934485</updated>
-      <workItem from="1422701936722" duration="14456000" />
+      <workItem from="1422701936722" duration="14973000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14456000" />
+    <option name="totallyTimeSpent" value="14973000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1442,7 +1440,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Lijndiagram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.20428336" vertical-offset="1688" max-vertical-offset="2295">
+        <state vertical-scroll-proportion="2.5766063" vertical-offset="0" max-vertical-offset="2295">
           <caret line="92" column="40" selection-start-line="92" selection-start-column="40" selection-end-line="92" selection-end-column="40" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
